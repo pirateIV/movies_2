@@ -17,4 +17,11 @@ const getMovie = (id) => {
   });
 };
 
-export { getMovies, getMovie };
+/**
+ * Get Tv Shows (listing)
+ */
+const getTvShows = (query, page = 1) => {
+  return fetchTMDB(`/tv/${query}`, { page });
+};
+
+export { getMovies, getMovie, getTvShows };
