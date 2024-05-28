@@ -1,3 +1,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* Sidebar */
+  aside {
+    @apply w-full flex items-center bg-black fixed bottom-0 left-0 right-0 order-2 z-20 lg:top-0 lg:bottom-full lg:left-0 lg:order-1 lg:flex-col justify-evenly border-t border-gray-600 p-5 lg:border-t-0 lg:border-r lg:w-[70px] lg:min-h-screen;
+  }
+
+  /* featured media */
+  #featured {
+    @apply w-full h-full;
+  }
+  #featured .featured-container {
+    @apply relative h-[60vh] flex items-center justify-between;
+    background: #000;
+  }
+  #featured .featured-content {
+    @apply px-[100px] h-full w-full lg:w-2/3 space-y-3;
+    background-image: linear-gradient(
+      to right,
+      rgb(0 0 0 / 1) 0%,
+      rgb(0 0 0 / 1) 50%,
+      transparent 100%
+    );
+  }
+  #featured h1 {
+    @apply text-5xl;
+  }
+  #featured p {
+    @apply opacity-80;
+  }
+  #featured button {
+    @apply inline-flex items-center gap-2.5 px-6 py-3 transition-colors bg-[#17181a] hover:bg-[#292a2d];
+  }
+
+  /*  Media  */
+  .popular {
+    @apply py-5;
+    background: linear-gradient(to right, #111, 60%, #000);
+  }
+  .popular .header {
+    @apply mt-4 px-10 flex items-center justify-between;
+  }
+  .popular .header h1 {
+    @apply text-2xl;
+  }
+  .popular .header a {
+    @apply text-[#777] opacity-95 hover:text-[#40c1ad];
+  }
+  .popular .content {
+    @apply overflow-x-auto px-10;
+  }
+  .popular .content ul {
+    @apply flex my-5 justify-between flex-shrink-0 gap-1.5;
+  }
+  .popular .content li {
+    @apply p-1 w-40 md:w-60 bg-gray-800 hover:scale-105;
+  }
+  .popular .media-item {
+    @apply p-1 w-40 md:w-60 bg-gray-800 hover:scale-105;
+    transition: transform 0.4s ease;
+  }
+  .popular .content img {
+    @apply w-full h-full object-cover;
+  }
+  .movie-title {
+    @apply mt-2;
+  }
+}

@@ -11,7 +11,7 @@ const links = [
 
 const SidebarNav = () => {
   return (
-    <aside className="w-full flex items-center bg-black fixed bottom-0 left-0 right-0 order-2 lg:top-0 lg:bottom-full lg:left-0 lg:order-1 lg:flex-col justify-evenly border-t border-gray-600 p-5 lg:border-t-0 lg:border-r lg:w-[70px] lg:min-h-screen">
+    <aside>
       {links.map(({ to, label, activeIcon, defaultIcon }) => (
         <NavLink key={to} to={to} title={label} aria-label={label}>
           {({ isActive }) => (

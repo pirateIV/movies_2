@@ -1,27 +1,17 @@
-import { Router, useRoutes } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 
-import Root from "root";
-import Movies from "@pages/movies/Movies";
-import Search from "@pages/search/Search";
-import TvShow from "@pages/tv/TvShow";
+import routes from "routes/routes";
 import SidebarNav from "components/SidebarNav";
-import routes from "@routes/routes";
+import Container, { MainContent } from "components/Container";
 
 const App = () => {
   const element = useRoutes(routes);
 
   return (
-    <div>
-      <div className="relative w-full flex flex-col lg:flex-row items-start justify-end">
-        <SidebarNav />
-        <div
-          className="min-h-screen order-1 lg:order-2"
-          style={{ width: "calc(100% - 70px)" }}
-        >
-          {element}
-        </div>
-      </div>
-    </div>
+    <Container>
+      <SidebarNav />
+      <MainContent>{element}</MainContent>
+    </Container>
   );
 };
 
