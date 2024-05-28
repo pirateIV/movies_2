@@ -12,9 +12,12 @@ const App = () => {
 
   return (
     <div>
-      <div className="relative min-h-screen w-full flex flex-col lg:flex-row items-center">
+      <div className="relative w-full flex flex-col lg:flex-row items-start justify-end">
         <SidebarNav />
-        <div className="min-h-screen order-1 lg:order-2 w-full">
+        <div
+          className="min-h-screen order-1 lg:order-2"
+          style={{ width: "calc(100% - 70px)" }}
+        >
           {element}
         </div>
       </div>

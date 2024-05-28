@@ -13,6 +13,12 @@ const routes = [
   {
     path: "/movies",
     element: <Movies />,
+    children: [
+      {
+        path: "/movies/:movieId",
+        element: <Movies />,
+      },
+    ],
   },
   {
     path: "/tv",
