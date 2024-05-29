@@ -39,7 +39,7 @@ const Root = () => {
 
   return (
     <div className="min-h-screen max-w-[100vw]">
-      <FeaturedMedia featured={featured} />
+      <FeaturedMedia item={featured} />
       <Media
         items={movies}
         itemType="movie"

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const FeaturedMedia = ({ featured }) => {
-  console.log(featured);
+const FeaturedMedia = ({ item }) => {
+  console.log(item);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -20,8 +20,15 @@ const FeaturedMedia = ({ featured }) => {
     visible: { opacity: 1, y: 0 },
   };
 
+  const truncate = (string, maxLength) => {
+    if (string && string.length > maxLength) {
+      return string.substring(0, maxLength) + "...";
+    }
+    return string;
+  };
+
   return (
-    <Link to={`movie/${featured?.id}`} id="featured">
+    <Link to={`movie/${item?.id}`} id="featured">
       <div className="featured-container aspect-3/2 lg:aspect-25/9">
         <motion.div
           className="featured-content absolute z-20 top-0 bottom-0 flex flex-col items-start justify-center"
@@ -38,8 +45,10 @@ const FeaturedMedia = ({ featured }) => {
             </button>
           </motion.div>
 
-          <motion.h1 variants={itemVariants}>{featured?.title}</motion.h1>
-          <motion.p variants={itemVariants}>{featured?.overview}</motion.p>
+          <motion.h1 variants={itemVariants}>{item?.title}</motion.h1>
+          <motion.p variants={itemVariants}>
+            {truncate(item?.overview, 150)}{" "}
+          </motion.p>
 
           <motion.button id="watch_trailer" variants={itemVariants}>
             <div className="i-ph-play"></div>
@@ -50,8 +59,8 @@ const FeaturedMedia = ({ featured }) => {
         <div className="featured-image absolute w-full lg:w-2/3 inset-y-0 bottom-0 lg:right-0 z-10 h-2/3 lg:h-full">
           <img
             className="w-full h-full object-cover"
-            // src={`https://image.tmdb.org/t/p/w1280/${featured?.backdrop_path}`}
-            src={`https://image.tmdb.org/t/p/w780/${featured?.backdrop_path}`}
+            // src={`https://image.tmdb.org/t/p/w1280/${item?.backdrop_path}`}
+            src={`https://image.tmdb.org/t/p/w780/${item?.backdrop_path}`}
             alt=""
           />
         </div>

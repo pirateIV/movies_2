@@ -25,10 +25,10 @@
     );
   }
   #featured h1 {
-    @apply text-4xl md:text-5xl line-clamp-2;
+    @apply text-3xl sm:text-4xl md:text-5xl line-clamp-2;
   }
   #featured p {
-    @apply opacity-80 text-xs md:text-base;
+    @apply opacity-80 min-[150px]:hidden min-[250px]:block md:line-clamp-5 text-xs md:text-base;
   }
   #featured button#watch_trailer {
     @apply hidden sm:inline-flex items-center gap-2.5 px-6 py-3 transition-colors bg-[#17181a] hover:bg-[#292a2d];
@@ -36,20 +36,20 @@
 
   /*  Media  */
   .popular {
-    @apply py-5;
+    @apply py-5 min-h-80;
     background: linear-gradient(to right, #111, 60%, #000);
   }
   .popular .header {
-    @apply mt-4 px-10 flex items-center justify-between;
+    @apply mt-4 px-5 md:px-10 flex items-center justify-between;
   }
   .popular .header h1 {
-    @apply text-2xl;
+    @apply sm:text-xl md:text-2xl;
   }
   .popular .header a {
-    @apply text-[#777] opacity-95 hover:text-[#40c1ad];
+    @apply text-xs md:text-base text-[#777] opacity-95 hover:text-[#40c1ad];
   }
   .popular .content {
-    @apply overflow-x-auto px-10;
+    @apply overflow-x-auto px-5 md:px-10;
   }
   .popular .content ul {
     @apply flex my-5 justify-between flex-shrink-0 gap-2;
@@ -58,14 +58,14 @@
     @apply p-1 w-40 md:w-60 bg-gray-800 hover:scale-105;
   }
   .popular .media-item {
-    @apply p-1 w-40 md:w-60 bg-gray-800 hover:scale-105;
+    @apply p-0.5 sm:p-1 w-28 sm:w-40 md:w-60 bg-gray-800 hover:scale-105;
     transition: transform 0.4s ease;
   }
   .popular .content img {
     @apply w-full h-full object-cover;
   }
   .movie-title {
-    @apply mt-2;
+    @apply mt-2 text-xs md:text-sm lg:text-base;
   }
 }
 
