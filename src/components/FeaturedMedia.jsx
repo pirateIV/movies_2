@@ -1,25 +1,51 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const FeaturedMedia = ({ featured }) => {
   console.log(featured);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 2,
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <Link to={`movie/${featured?.id}`} id="featured">
       <div className="featured-container aspect-3/2 lg:aspect-25/9">
-        <div className="featured-content absolute z-20 top-0 bottom-0 flex flex-col items-start justify-center ">
-          <div className="absolute lg:hidden p-10 top-0 left-0">
+        <motion.div
+          className="featured-content absolute z-20 top-0 bottom-0 flex flex-col items-start justify-center"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
+          <motion.div
+            className="absolute lg:hidden p-10 top-0 left-0"
+            variants={itemVariants}
+          >
             <button className="text-5xl text-white/50 hover:text-white">
               <div className="i-ph-play-circle-light"></div>
             </button>
-          </div>
+          </motion.div>
 
-          <h1>{featured?.title}</h1>
-          <p>{featured?.overview}</p>
+          <motion.h1 variants={itemVariants}>{featured?.title}</motion.h1>
+          <motion.p variants={itemVariants}>{featured?.overview}</motion.p>
 
-          <button id="watch_trailer">
+          <motion.button id="watch_trailer" variants={itemVariants}>
             <div className="i-ph-play"></div>
             Watch Trailer
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
 
         <div className="featured-image absolute w-full lg:w-2/3 inset-y-0 bottom-0 lg:right-0 z-10 h-2/3 lg:h-full">
           <img

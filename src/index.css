@@ -52,7 +52,7 @@
     @apply overflow-x-auto px-10;
   }
   .popular .content ul {
-    @apply flex my-5 justify-between flex-shrink-0 gap-1.5;
+    @apply flex my-5 justify-between flex-shrink-0 gap-2;
   }
   .popular .content li {
     @apply p-1 w-40 md:w-60 bg-gray-800 hover:scale-105;
