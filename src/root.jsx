@@ -27,7 +27,7 @@ const Root = () => {
           allItems[Math.floor(Math.random() * allItems.length)];
 
         if (randomItem) {
-          const item = await getMovie(randomItem.id);
+          const item = await getMovie('823464');
           setFeatured(item.data);
         }
       } catch (error) {

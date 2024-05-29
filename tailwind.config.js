@@ -6,6 +6,10 @@ export default {
       fontFamily: {
         sans: ["DM Sans", "ui-sans-serif", "system-ui"],
       },
+      aspectRatio: {
+        "3/2": "3/2",
+        "25/9": "25/9",
+      },
     },
   },
   plugins: [],
