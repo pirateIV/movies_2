@@ -18,7 +18,7 @@ const SidebarNav = () => {
             <div
               className={`${
                 isActive ? `${activeIcon} text-primary` : defaultIcon
-              } text-2xl`}
+              } text-xl sm:text-2xl`}
             ></div>
           )}
         </NavLink>

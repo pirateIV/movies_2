@@ -5,7 +5,7 @@
 @layer base {
   /* Sidebar */
   aside {
-    @apply w-full flex items-center bg-black fixed bottom-0 left-0 right-0 order-2 z-50 lg:top-0 lg:bottom-full lg:left-0 lg:order-1 lg:flex-col justify-evenly border-t border-[#1f2123] p-5 lg:border-t-0 lg:border-r lg:w-[70px] lg:min-h-screen;
+    @apply w-full flex items-center bg-black fixed bottom-0 left-0 right-0 order-2 z-50 lg:top-0 lg:bottom-full lg:left-0 lg:order-1 lg:flex-col justify-evenly border-t border-[#1f2123] p-3.5 px-1 sm:p-5 lg:border-t-0 lg:border-r lg:w-[70px] lg:min-h-screen;
   }
 
   /* featured media */
@@ -16,7 +16,7 @@
     @apply relative flex items-center flex-col lg:flex-row justify-between;
   }
   #featured .featured-content {
-    @apply px-10 lg:px-[6.25rem] h-full w-full lg:w-2/3 space-y-4;
+    @apply px-10 lg:px-[6.25rem]  absolute z-20 top-0 bottom-0 flex flex-col items-start justify-center h-full w-full lg:w-2/3 space-y-4;
     background-image: linear-gradient(
       to top,
       rgb(0 0 0 / 1) 0%,
@@ -28,7 +28,10 @@
     @apply text-3xl sm:text-4xl md:text-5xl line-clamp-2;
   }
   #featured p {
-    @apply opacity-80 min-[150px]:hidden min-[250px]:block md:line-clamp-5 text-xs md:text-base;
+    @apply md:text-start opacity-80 line-clamp-3 md:line-clamp-4 lg:line-clamp-5 text-xs md:text-base;
+  }
+  #featured .featured-image {
+    @apply absolute w-full lg:w-2/3 inset-y-0 bottom-0 lg:right-0 z-10 h-2/3 lg:h-full;
   }
   #featured button#watch_trailer {
     @apply hidden sm:inline-flex items-center gap-2.5 px-6 py-3 transition-colors bg-[#17181a] hover:bg-[#292a2d];
@@ -36,7 +39,7 @@
 
   /*  Media  */
   .popular {
-    @apply py-5 min-h-80;
+    @apply py-1 sm:py-5 min-h-80;
     background: linear-gradient(to right, #111, 60%, #000);
   }
   .popular .header {
@@ -65,7 +68,7 @@
     @apply w-full h-full object-cover;
   }
   .movie-title {
-    @apply mt-2 text-xs md:text-sm lg:text-base;
+    @apply mt-2 text-center text-xs md:text-sm lg:text-base;
   }
 }
 
