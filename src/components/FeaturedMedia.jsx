@@ -11,13 +11,16 @@ const FeaturedMedia = ({ featured }) => {
               <div className="i-ph-play-circle-light"></div>
             </button>
           </div>
+
           <h1>{featured?.title}</h1>
           <p>{featured?.overview}</p>
+
           <button id="watch_trailer">
             <div className="i-ph-play"></div>
             Watch Trailer
           </button>
         </div>
+
         <div className="featured-image absolute w-full lg:w-2/3 inset-y-0 bottom-0 lg:right-0 z-10 h-2/3 lg:h-full">
           <img
             className="w-full h-full object-cover"
