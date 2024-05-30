@@ -42,7 +42,7 @@ const FeaturedMedia = ({ item }) => {
             className="absolute p-10 top-0 xs:left-0 right-0 lg:hidden max-w-[300px]:right-0"
             variants={itemVariants}
           >
-            <button className="text-5xl text-white/50 hover:text-white">
+            <button title="watchTrailer" className="text-5xl text-white/50 hover:text-white">
               <div className="i-ph-play-circle-light"></div>
             </button>
           </motion.div>

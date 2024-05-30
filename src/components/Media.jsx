@@ -28,15 +28,13 @@ const Media = ({ title, items, itemType, exploreLink }) => {
                         fit: "crop",
                         fm: "jpg",
                       }}
-                      width={400}
-                      height={600}
-                      alt={item.title}
+                      width={500}
+                      height={750}
+                      alt={`movie title: ${item?.title || item?.name}`}
                     />
                   ) : null}
                 </div>
-                <div className="movie-title">
-                  {item.title || item.name || item.original_name}
-                </div>
+                <div className="movie-title">{item?.title || item?.name}</div>
               </Link>
             </li>
           ))}
