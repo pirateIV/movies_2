@@ -16,8 +16,8 @@ const Media = ({ title, items, itemType, exploreLink }) => {
       <div className="content">
         <ul>
           {items.map((item) => (
-            <li>
-              <Link key={item.id} to={`/${itemType}/${item.id}`}>
+            <li key={item.id} >
+              <Link to={`/${itemType}/${item.id}`}>
                 <div className="media-item">
                   {item?.poster_path ? (
                     <Imgix
