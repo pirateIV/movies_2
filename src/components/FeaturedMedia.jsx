@@ -62,6 +62,7 @@ const FeaturedMedia = ({ item }) => {
               src={buildURL(item?.backdrop_path)}
               className="w-full h-full object-cover"
               sizes="(max-width: 800px) 100vw, 800px"
+              loading="lazy"
               imgixParams={{
                 auto: "compress,format",
                 fit: "crop",
@@ -70,6 +71,7 @@ const FeaturedMedia = ({ item }) => {
               }}
               width={800}
               height={450}
+              alt={item?.title}
             />
           ) : null}
         </div>
