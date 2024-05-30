@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import Imgix from "react-imgix";
 
 const Media = ({ title, items, itemType, exploreLink }) => {
+  const buildURL = (imagePath) =>
+    `https://image.tmdb.org/t/p/w500/${imagePath}`;
+
   return (
     <div className="popular">
       <div className="header">
@@ -14,12 +18,19 @@ const Media = ({ title, items, itemType, exploreLink }) => {
           {items.map((item) => (
             <Link key={item.id} to={`/${itemType}/${item.id}`}>
               <div className="media-item">
-                <img
-                  width="400"
-                  height="600"
-                  alt={item.title || item.name || item.original_name}
-                  src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-                />
+                {item?.poster_path ? (
+                  <Imgix
+                    src={buildURL(item?.poster_path)}
+                    sizes="(min-width: 960px) 400px, (min-width: 640px) 200px, 900px"
+                    imgixParams={{
+                      auto: "compress,format",
+                      fit: "crop",
+                      fm: "jpg",
+                    }}
+                    width={400}
+                    height={600}
+                  />
+                ) : null}
               </div>
               <div className="movie-title">
                 {item.title || item.name || item.original_name}

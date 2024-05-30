@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import Imgix from "react-imgix";
 
 const FeaturedMedia = ({ item }) => {
   console.log(item);
@@ -9,16 +10,24 @@ const FeaturedMedia = ({ item }) => {
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 2,
-        staggerChildren: 0.3,
+        duration: 0.5,
       },
     },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
   };
+
+  const buildURL = (imagePath) =>
+    `https://image.tmdb.org/t/p/w780/${imagePath}`;
 
   return (
     <Link to={`movie/${item?.id}`} id="featured">
@@ -39,10 +48,7 @@ const FeaturedMedia = ({ item }) => {
           </motion.div>
 
           <motion.h1 variants={itemVariants}>{item?.title}</motion.h1>
-          <motion.p variants={itemVariants}>
-            {/* {truncate(item?.overview, 150)}{" "} */}
-            {item?.overview}
-          </motion.p>
+          <motion.p variants={itemVariants}>{item?.overview}</motion.p>
 
           <motion.button id="watch_trailer" variants={itemVariants}>
             <div className="i-ph-play"></div>
@@ -51,12 +57,21 @@ const FeaturedMedia = ({ item }) => {
         </motion.div>
 
         <div className="featured-image">
-          <img
-            className="w-full h-full object-cover"
-            // src={`https://image.tmdb.org/t/p/w1280/${item?.backdrop_path}`}
-            src={`https://image.tmdb.org/t/p/w780/${item?.backdrop_path}`}
-            alt={item?.title}
-          />
+          {item?.backdrop_path ? (
+            <Imgix
+              src={buildURL(item?.backdrop_path)}
+              className="w-full h-full object-cover"
+              sizes="(max-width: 800px) 100vw, 800px"
+              imgixParams={{
+                auto: "compress,format",
+                fit: "crop",
+                w: 800,
+                q: 80,
+              }}
+              width={800}
+              height={450}
+            />
+          ) : null}
         </div>
       </div>
     </Link>

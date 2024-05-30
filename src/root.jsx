@@ -26,6 +26,7 @@ const Root = () => {
         const randomItem =
           allItems[Math.floor(Math.random() * allItems.length)];
 
+        console.log(allItems);
         if (randomItem) {
           const item = await getMovie(randomItem?.id);
           setFeatured(item.data);
@@ -40,23 +41,22 @@ const Root = () => {
   return (
     <div className="min-h-screen max-w-[100vw]">
       <FeaturedMedia item={featured} />
+
       <Media
         items={movies}
         itemType="movie"
         title="Popular Movies"
         exploreLink="/movie/category/popular"
       />
+
       <Media
-        itemType="tv"
         items={tvShows}
+        itemType="tv"
         title="Popular TV Shows"
         exploreLink="/tv/category/popular"
       />
     </div>
   );
 };
-
-
-
 
 export default Root;
