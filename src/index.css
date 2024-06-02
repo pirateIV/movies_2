@@ -25,7 +25,7 @@
     );
   }
   #featured h1 {
-    @apply text-3xl sm:text-4xl md:text-5xl line-clamp-2;
+    @apply text-2xl sm:text-3xl md:text-5xl line-clamp-2;
   }
   #featured p {
     @apply md:text-start opacity-80 line-clamp-3 md:line-clamp-4 lg:line-clamp-5 text-xs md:text-base;

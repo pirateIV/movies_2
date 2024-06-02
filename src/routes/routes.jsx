@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
+
+import Root from "root";
+import TvShow from "@pages/tv/TvShow";
 import Movies from "@pages/movies/Movies";
 import Search from "@pages/search/Search";
-import TvShow from "@pages/tv/TvShow";
-import Root from "root";
 
-const routes = [
+const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
@@ -28,6 +28,6 @@ const routes = [
     path: "/search",
     element: <Search />,
   },
-];
+]);
 
-export default routes;
+export default router;

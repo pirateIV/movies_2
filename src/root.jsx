@@ -2,11 +2,15 @@ import { useEffect, useState } from "react";
 import { getMovie, getMovies, getTvShows } from "services/tmdbAPI";
 import Media from "components/Media";
 import FeaturedMedia from "components/FeaturedMedia";
+import { useNavigation } from "react-router-dom";
+import Container, { MainContent } from "components/Container";
+import SidebarNav from "components/SidebarNav";
 
 const Root = () => {
   const [movies, setMovies] = useState([]);
   const [tvShows, setTvShows] = useState([]);
   const [featured, setFeatured] = useState(null);
+  const navigation = useNavigation();
 
   useEffect(() => {
     const asyncData = async () => {
@@ -27,9 +31,10 @@ const Root = () => {
           allItems[Math.floor(Math.random() * allItems.length)];
 
         console.log(allItems);
+
         if (randomItem) {
-          const item = await getMovie(randomItem?.id);
-          setFeatured(item.data);
+          // const item = await getMovie(allItems[0]);
+          setFeatured(allItems[0]);
         }
       } catch (error) {
         console.error("Error fetching data", error);
@@ -39,23 +44,10 @@ const Root = () => {
   }, []);
 
   return (
-    <div className="min-h-screen max-w-[100vw]">
-      <FeaturedMedia item={featured} />
-
-      <Media
-        items={movies}
-        itemType="movie"
-        title="Popular Movies"
-        exploreLink="/movie/category/popular"
-      />
-
-      <Media
-        items={tvShows}
-        itemType="tv"
-        title="Popular TV Shows"
-        exploreLink="/tv/category/popular"
-      />
-    </div>
+    <Container>
+      <SidebarNav />
+      <MainContent featured={featured} movies={movies} tvShows={tvShows} />
+    </Container>
   );
 };
 
