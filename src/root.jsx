@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { getMovie, getMovies, getTvShows } from "services/tmdbAPI";
-import Media from "components/Media";
-import FeaturedMedia from "components/FeaturedMedia";
-import { useNavigation } from "react-router-dom";
+import { useOutlet } from "react-router-dom";
 import Container, { MainContent } from "components/Container";
 import SidebarNav from "components/SidebarNav";
 
@@ -10,7 +8,7 @@ const Root = () => {
   const [movies, setMovies] = useState([]);
   const [tvShows, setTvShows] = useState([]);
   const [featured, setFeatured] = useState(null);
-  const navigation = useNavigation();
+  const outlet = useOutlet();
 
   useEffect(() => {
     const asyncData = async () => {
@@ -46,7 +44,10 @@ const Root = () => {
   return (
     <Container>
       <SidebarNav />
-      <MainContent featured={featured} movies={movies} tvShows={tvShows} />
+      {!outlet && (
+        <MainContent featured={featured} movies={movies} tvShows={tvShows} />
+      )}
+      {outlet}
     </Container>
   );
 };

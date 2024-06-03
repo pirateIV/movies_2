@@ -29,8 +29,6 @@ const FeaturedMedia = ({ item }) => {
   const buildURL = (imagePath) =>
     `https://image.tmdb.org/t/p/w780/${imagePath}`;
 
-  // console.log(item)
-
   return (
     <Link to={`movie/${item?.id}`} id="featured">
       <div className="featured-container aspect-3/2 lg:aspect-25/9">
@@ -53,28 +51,38 @@ const FeaturedMedia = ({ item }) => {
           </motion.div>
 
           <motion.h1 variants={itemVariants}>{item?.title}</motion.h1>
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center gap-2 *:opacity-60 *:inset-y-0"
-          >
-            <div className="relative aspect-[11/2] w-[6.25rem]">
-              <img className="absolute" src={stars} aria-hidden="true" />
-              <img className="absolute" src={stars_filled} aria-hidden="true" />
-            </div>
-            <div className="" id="vote-average">
-              {Math.round(item?.vote_average).toFixed(0)}
-            </div>
-            <span> · </span>
-            <div id="reviews">{item?.vote_count} Reviews</div>
-            <span> · </span>
-            <div id="release-date">{item?.release_date.substring(0, 4)}</div>
-          </motion.div>
-          <motion.p variants={itemVariants}>{item?.overview}</motion.p>
+          {item && (
+            <>
+              <motion.div
+                variants={itemVariants}
+                className="flex items-center gap-2 *:opacity-60 *:inset-y-0"
+              >
+                <div className="relative aspect-[11/2] w-[6.25rem]">
+                  <img className="absolute" src={stars} aria-hidden="true" />
+                  <img
+                    className="absolute"
+                    src={stars_filled}
+                    aria-hidden="true"
+                  />
+                </div>
+                <div className="" id="vote-average">
+                  {Math.round(item?.vote_average).toFixed(0)}
+                </div>
+                <span> · </span>
+                <div id="reviews">{item?.vote_count} Reviews</div>
+                <span> · </span>
+                <div id="release-date">
+                  {item?.release_date.substring(0, 4)}
+                </div>
+              </motion.div>
+              <motion.p variants={itemVariants}>{item?.overview}</motion.p>
 
-          <motion.button id="watch_trailer" variants={itemVariants}>
-            <div className="i-ph-play"></div>
-            Watch Trailer
-          </motion.button>
+              <motion.button id="watch_trailer" variants={itemVariants}>
+                <div className="i-ph-play"></div>
+                Watch Trailer
+              </motion.button>
+            </>
+          )}
         </motion.div>
 
         <div className="featured-image">
