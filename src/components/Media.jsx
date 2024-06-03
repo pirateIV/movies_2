@@ -16,7 +16,7 @@ const Media = ({ title, items, itemType, exploreLink }) => {
       <div className="content">
         <ul>
           {items.map((item) => (
-            <li key={item.id} >
+            <li key={item.id}>
               <Link to={`/${itemType}/${item.id}`}>
                 <div className="media-item">
                   {item?.poster_path ? (
@@ -28,13 +28,18 @@ const Media = ({ title, items, itemType, exploreLink }) => {
                         fit: "crop",
                         fm: "jpg",
                       }}
+                      loading="lazy"
                       width={500}
                       height={750}
-                      alt={`movie title: ${item?.title || item?.name}`}
+                      alt={`movie title: ${
+                        item?.title || item?.name || "..."
+                      } `}
                     />
                   ) : null}
                 </div>
-                <div className="movie-title">{item?.title || item?.name}</div>
+                <div className="movie-title">
+                  {item?.title || item?.name || "..."}
+                </div>
               </Link>
             </li>
           ))}
