@@ -108,8 +108,10 @@ const FeaturedMedia = ({ item }) => {
                 w: 800,
                 q: 80,
               }}
-              width={800}
-              height={450}
+              htmlAttributes={{
+                width: 800,
+                height: 450,
+              }}
               alt={item?.title}
             />
           ) : null}

@@ -26,11 +26,12 @@ const Media = ({ title, items, itemType, exploreLink }) => {
                       imgixParams={{
                         auto: "compress,format",
                         fit: "crop",
-                        fm: "jpg",
+                        fm: "webp",
                       }}
-                      loading="lazy"
-                      width={500}
-                      height={750}
+                      htmlAttributes={{
+                        width: 500,
+                        height: 750,
+                      }}
                       alt={`movie title: ${
                         item?.title || item?.name || "..."
                       } `}
