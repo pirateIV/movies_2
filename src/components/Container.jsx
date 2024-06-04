@@ -11,12 +11,7 @@ const Container = ({ children }) => {
 
 export const MainContent = ({ featured, movies, tvShows }) => {
   return (
-    <div
-      className="min-h-screen w-full order-1 lg:order-2 lg:max-w-[calc(100%-70px)]"
-      // style={{
-      //   width: "calc(100% - 100px)"
-      // }}
-    >
+    <div className="min-h-screen w-full order-1 lg:order-2 lg:max-w-[calc(100%-70px)]">
       <div className="min-h-screen">
         <FeaturedMedia item={featured} />
 

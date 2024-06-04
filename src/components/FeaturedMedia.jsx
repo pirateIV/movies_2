@@ -57,12 +57,22 @@ const FeaturedMedia = ({ item }) => {
                 variants={itemVariants}
                 className="flex items-center gap-2 *:opacity-60 *:inset-y-0"
               >
-                <div className="relative aspect-[11/2] w-[6.25rem]">
+                <div
+                  className="relative flex items-center aspect-11/2 w-[6.25rem]"
+                  style={{
+                    filter: "hue-rotate(320deg) brightness(5) contrast(100%)",
+                  }}
+                >
                   <img className="absolute" src={stars} aria-hidden="true" />
                   <img
                     className="absolute"
                     src={stars_filled}
                     aria-hidden="true"
+                    style={{
+                      clipPath: `inset(0 ${
+                        100 - item?.vote_average * 10
+                      }% 0 0)`,
+                    }}
                   />
                 </div>
                 <div className="" id="vote-average">
