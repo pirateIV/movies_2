@@ -3,7 +3,7 @@ import FeaturedMedia from "./FeaturedMedia";
 
 const Container = ({ children }) => {
   return (
-    <div className="relative w-full flex flex-col lg:flex-row items-end justify-end overflow-hidden">
+    <div className="relative w-full flex flex-col items-end justify-end overflow-hidden">
       {children}
     </div>
   );
@@ -11,7 +11,7 @@ const Container = ({ children }) => {
 
 export const MainContent = ({ featured, movies, tvShows }) => {
   return (
-    <div className="min-h-screen w-full order-1 lg:order-2 lg:max-w-[calc(100%-70px)]">
+    <div className="min-h-screen w-full lg:max-w-[calc(100%-70px)]">
       <div className="min-h-screen">
         <FeaturedMedia item={featured} />
 

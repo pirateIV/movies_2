@@ -3,6 +3,7 @@ import { getMovie, getMovies, getTvShows } from "services/tmdbAPI";
 import { useOutlet } from "react-router-dom";
 import Container, { MainContent } from "components/Container";
 import SidebarNav from "components/SidebarNav";
+import Footer from "components/Footer";
 
 const Root = () => {
   const [movies, setMovies] = useState([]);
@@ -48,6 +49,7 @@ const Root = () => {
         <MainContent featured={featured} movies={movies} tvShows={tvShows} />
       )}
       {outlet}
+      <Footer />  
     </Container>
   );
 };

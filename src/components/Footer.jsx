@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <div className="w-full p-10 order-last lg:max-w-[calc(100%-70px)]">Footer</div>
   )
 }
 
