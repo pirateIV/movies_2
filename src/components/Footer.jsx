@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="w-full p-10 order-last lg:max-w-[calc(100%-70px)]">
+    <footer className="w-full p-16 order-last lg:max-w-[calc(100%-70px)]">
       <div className="flex gap-2 items-center my-2">
         <img src="/movies-sm.webp" alt="" />
         <div className="text-xl">React Movies</div>
@@ -25,24 +25,39 @@ const Footer = () => {
       </div>
 
       <div>
-        <p className="text-sm text-gray-300/60">
+        <p className="text-sm text-gray-300/60 my-2">
           This project uses the TMDB API but is not endorsed or certified by
           TMDB.
         </p>
       </div>
 
-      <div className="mt-5">
+      <div className="mt-8">
         <div className="flex items-center gap-5 text-lg">
-          <a href="https://twitter.com/benabolade">
+          <a
+            href="https://twitter.com/benabolade"
+            target="_blank"
+            aria-label="Link to Twitter account"
+            rel="nopener"
+          >
             <div className="i-simple-icons:twitter"></div>
           </a>
 
-          <a href="https://github.com/pirateIV/react.movies">
+          <a
+            href="https://github.com/pirateIV/react.movies"
+            target="_blank"
+            aria-label="Link to Github account"
+            rel="nopener"
+          >
             <div className="i-simple-icons:github"></div>
           </a>
 
-          <a href="https://vercel.com">
-            <img src="/vercel.svg" width="145" alt="" />
+          <a
+            href="https://vercel.com"
+            target="_blank"
+            aria-label="go to vercel"
+            rel="nopener"
+          >
+            <img src="/vercel.svg" width="145" height="30" alt="" />
           </a>
 
           <div>
