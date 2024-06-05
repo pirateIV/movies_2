@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import Imgix from "react-imgix";
+import stars from "assets/images/stars.png";
+import stars_filled from "assets/images/stars-filled.png";
 
 const Media = ({ title, items, itemType, exploreLink }) => {
   const buildURL = (imagePath) =>
@@ -40,6 +42,29 @@ const Media = ({ title, items, itemType, exploreLink }) => {
                 </div>
                 <div className="movie-title">
                   {item?.title || item?.name || "..."}
+                </div>
+                <div className="flex items-center text-sm gap-2">
+                  <div
+                    className="relative aspect-11/2 w-20 *:inset-x-0"
+                    style={{
+                      filter: "hue-rotate(320deg)",
+                    }}
+                  >
+                    <img className="absolute w-20" src={stars} aria-hidden="true" />
+                    <img
+                      src={stars_filled}
+                      className="absolute w-20"
+                      aria-hidden="true"
+                      style={{
+                        clipPath: `inset(0 ${
+                          100 - item?.vote_average * 10
+                        }% 0 0)`,
+                      }}
+                    />
+                  </div>
+                  <div className="opacity-60">
+                    {item?.vote_average.toFixed(1)}
+                  </div>
                 </div>
               </Link>
             </li>

@@ -4,7 +4,7 @@
 
 @layer base {
   * {
-    @apply font-sans 
+    @apply font-sans;
   }
   /* Sidebar */
   aside {
@@ -68,7 +68,7 @@
     @apply w-full h-full object-cover;
   }
   .movie-title {
-    @apply mt-2 text-center text-xs md:text-sm lg:text-base;
+    @apply mt-2 text-center sm:text-start text-xs md:text-sm lg:text-base;
   }
 }
 

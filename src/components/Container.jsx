@@ -3,7 +3,7 @@ import FeaturedMedia from "./FeaturedMedia";
 
 const Container = ({ children }) => {
   return (
-    <div className="relative w-full flex flex-col items-end justify-end overflow-hidden">
+    <div className="relative w-full flex flex-col pb-[70px] lg:pb-0 items-end justify-end overflow-hidden">
       {children}
     </div>
   );
