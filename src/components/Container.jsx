@@ -1,4 +1,5 @@
-import Media from "./Media";
+import { useTranslation } from "react-i18next";
+import MediaContainer from "./Media";
 import FeaturedMedia from "./FeaturedMedia";
 
 const Container = ({ children }) => {
@@ -10,22 +11,23 @@ const Container = ({ children }) => {
 };
 
 export const MainContent = ({ featured, movies, tvShows }) => {
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen w-full lg:max-w-[calc(100%-70px)]">
       <div className="min-h-screen">
         <FeaturedMedia item={featured} />
 
-        <Media
+        <MediaContainer
           items={movies}
           itemType="movie"
-          title="Popular Movies"
+          title={t("Popular Movies")}
           exploreLink="/movie/category/popular"
         />
 
-        <Media
+        <MediaContainer
           items={tvShows}
           itemType="tv"
-          title="Popular TV Shows"
+          title={t("Popular TV Shows")}
           exploreLink="/tv/category/popular"
         />
       </div>

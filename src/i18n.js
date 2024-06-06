@@ -1,21 +1,50 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import HttpApi from "i18next-http-backend";
-import LanguageDetector from "i18next-browser-languagedetector";
 
-i18n
-  .use(HttpApi)
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    fallbackLng: "en",
-    debug: true,
-    interpolation: {
-      escapeValue: false,
+// translations
+import de from "locales/de-DE/de-DE.json";
+import en from "locales/en/en.json";
+import es from "locales/es-ES/es-ES.json";
+import fr from "locales/fr-FR/fr-FR.json";
+import it from "locales/it/it.json";
+import ja from "locales/ja/ja.json";
+import pt_b from "locales/pt-BR/pt-BR.json";
+import pt_p from "locales/pt-PT/pt-PT.json";
+import zh from "locales/zh-CN/zh-CN.json";
+
+i18n.use(initReactI18next).init({
+  fallbackLng: "en",
+  debug: true,
+  lng: "zh-CN",
+  resources: {
+    "de-DE": {
+      translation: de,
     },
-    backend: {
-      loadPath: "/locales/{{lng}}/{{ns}}.json",
+    en: {
+      translation: en,
     },
-  });
+    "es-ES": {
+      translation: es,
+    },
+    "fr-FR": {
+      translation: fr,
+    },
+    it: {
+      translation: it,
+    },
+    ja: {
+      translation: ja,
+    },
+    "pt-BR": {
+      translation: pt_b,
+    },
+    "pt-PT": {
+      translation: pt_p,
+    },
+    "zh-CN": {
+      translation: zh,
+    },
+  },
+});
 
 export default i18n;

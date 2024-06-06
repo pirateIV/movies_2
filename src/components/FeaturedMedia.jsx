@@ -1,11 +1,15 @@
-import { Link } from "react-router-dom";
 import Imgix from "react-imgix";
-import { motion, useAnimation } from "framer-motion";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { motion, useAnimation } from "framer-motion";
+
 import stars from "../assets/images/stars.png";
 import stars_filled from "../assets/images/stars-filled.png";
 
 const FeaturedMedia = ({ item }) => {
+  const { t } = useTranslation();
+
   const [showContent, setShowContent] = useState(false);
   const contentAnimation = useAnimation();
 
@@ -73,7 +77,7 @@ const FeaturedMedia = ({ item }) => {
 
               <button id="watch_trailer">
                 <div className="i-ph-play"></div>
-                Watch Trailer
+                {t("Watch Trailer")}
               </button>
             </>
           )}

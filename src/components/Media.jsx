@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import Imgix from "react-imgix";
 import stars from "assets/images/stars.png";
 import stars_filled from "assets/images/stars-filled.png";
+import { useTranslation } from "react-i18next";
 
-const Media = ({ title, items, itemType, exploreLink }) => {
+const MediaContainer = ({ title, items, itemType, exploreLink }) => {
+  const { t } = useTranslation();
   const buildURL = (imagePath) =>
     `https://image.tmdb.org/t/p/w500/${imagePath}`;
 
@@ -12,7 +14,7 @@ const Media = ({ title, items, itemType, exploreLink }) => {
       <div className="header">
         <h1>{title}</h1>
         <Link to={exploreLink} className="explore-link">
-          Explore more
+          {t("Explore more")}
         </Link>
       </div>
       <div className="content">
@@ -50,7 +52,11 @@ const Media = ({ title, items, itemType, exploreLink }) => {
                       filter: "hue-rotate(320deg)",
                     }}
                   >
-                    <img className="absolute w-20" src={stars} aria-hidden="true" />
+                    <img
+                      className="absolute w-20"
+                      src={stars}
+                      aria-hidden="true"
+                    />
                     <img
                       src={stars_filled}
                       className="absolute w-20"
@@ -75,4 +81,4 @@ const Media = ({ title, items, itemType, exploreLink }) => {
   );
 };
 
-export default Media;
+export default MediaContainer;
