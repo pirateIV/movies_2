@@ -61,7 +61,7 @@
     @apply flex my-5 justify-between flex-shrink-0 gap-2;
   }
   .popular .media-item {
-    @apply p-0.5 sm:p-1 w-28 sm:w-40 md:w-60 bg-gray-800 hover:scale-105;
+    @apply block p-0.5 sm:p-1 aspect-[10/16]  bg-gray-800 hover:scale-105;
     transition: transform 0.4s ease;
   }
   .popular .content img {

@@ -1,3 +1,8 @@
+import IconTwitter from "./icon/IconTwitter";
+import IconGithub from "./icon/IconGithub";
+import IconVercel from "./icon/IconVercel";
+import LanguageSwitcher from "./LanguageSwitcher";
+
 const Footer = () => {
   return (
     <footer className="w-full p-16 order-last lg:max-w-[calc(100%-70px)]">
@@ -33,39 +38,11 @@ const Footer = () => {
 
       <div className="mt-8">
         <div className="flex items-center gap-5 text-lg">
-          <a
-            href="https://twitter.com/benabolade"
-            target="_blank"
-            aria-label="Link to Twitter account"
-            rel="nopener"
-          >
-            <div className="i-simple-icons:twitter"></div>
-          </a>
+          <IconTwitter />
+          <IconGithub />
+          <IconVercel />
 
-          <a
-            href="https://github.com/pirateIV/react.movies"
-            target="_blank"
-            aria-label="Link to Github account"
-            rel="nopener"
-          >
-            <div className="i-simple-icons:github"></div>
-          </a>
-
-          <a
-            href="https://vercel.com"
-            target="_blank"
-            aria-label="go to vercel"
-            rel="nopener"
-          >
-            <img src="/vercel.svg" width="145" height="30" alt="" />
-          </a>
-
-          <div>
-            Language:&nbsp;
-            <select id="langSwitcher" className="rounded text-sm p-1">
-              <option value="en">English</option>
-            </select>
-          </div>
+          <LanguageSwitcher />
         </div>
       </div>
     </footer>

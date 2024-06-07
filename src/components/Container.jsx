@@ -1,6 +1,8 @@
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import MediaContainer from "./Media";
-import FeaturedMedia from "./FeaturedMedia";
+import HeroMedia from "./media/HeroMedia";
+import MediaContainer from "./MediaContainer";
+import { getMedia, listMedia } from "services/tmdbAPI";
 
 const Container = ({ children }) => {
   return (
@@ -10,12 +12,48 @@ const Container = ({ children }) => {
   );
 };
 
-export const MainContent = ({ featured, movies, tvShows }) => {
+export const MainContent = () => {
   const { t } = useTranslation();
+
+  const [movies, setMovies] = useState([]);
+  const [tvShows, setTvShows] = useState([]);
+  const [featured, setFeatured] = useState(null);
+
+  useEffect(() => {
+    const asyncData = async () => {
+      try {
+        const [trendingMovies, trendingTvShows] = await Promise.all([
+          listMedia("movie", "popular"),
+          listMedia("tv", "popular"),
+        ]);
+
+        const movieResults = trendingMovies.data.results;
+        const tvShowResults = trendingTvShows.data.results;
+
+        setMovies(movieResults);
+        setTvShows(tvShowResults);
+
+        const allItems = [...movieResults, ...tvShowResults];
+        const randomItem =
+          allItems[Math.floor(Math.random() * allItems.length)];
+
+        console.log(allItems);
+
+        if (randomItem) {
+          const item = await getMedia("movie", allItems[0]?.id);
+          setFeatured(item.data);
+        }
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
+    };
+    asyncData();
+  }, []);
+
   return (
     <div className="min-h-screen w-full lg:max-w-[calc(100%-70px)]">
       <div className="min-h-screen">
-        <FeaturedMedia item={featured} />
+        <HeroMedia item={featured} />
 
         <MediaContainer
           items={movies}

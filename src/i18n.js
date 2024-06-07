@@ -15,7 +15,7 @@ import zh from "locales/zh-CN/zh-CN.json";
 i18n.use(initReactI18next).init({
   fallbackLng: "en",
   debug: true,
-  lng: "zh-CN",
+  lng: "en",
   resources: {
     "de-DE": {
       translation: de,

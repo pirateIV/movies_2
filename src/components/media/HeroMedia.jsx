@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, useAnimation } from "framer-motion";
 
-import stars from "../assets/images/stars.png";
-import stars_filled from "../assets/images/stars-filled.png";
+import { formatTime } from "utils/filters";
+import StarsRate from "components/StarsRate";
 
-const FeaturedMedia = ({ item }) => {
+const HeroMedia = ({ item }) => {
   const { t } = useTranslation();
 
   const [showContent, setShowContent] = useState(false);
@@ -29,7 +29,7 @@ const FeaturedMedia = ({ item }) => {
         }`}
         initial={{ opacity: 0 }}
         animate={contentAnimation}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 2 }}
       >
         <div className="featured-content">
           <div className="absolute p-10 top-0 xs:left-0 right-0 lg:hidden max-w-[300px]:right-0">
@@ -45,33 +45,26 @@ const FeaturedMedia = ({ item }) => {
           {item && (
             <>
               <div className="flex items-center gap-2 *:opacity-60 *:inset-y-0">
-                <div
-                  className="relative aspect-11/2 w-[6.25rem] !opacity-100"
-                  style={{
-                    filter: "hue-rotate(320deg)",
-                  }}
-                >
-                  <img className="absolute" src={stars} aria-hidden="true" />
-                  <img
-                    src={stars_filled}
-                    className="absolute"
-                    aria-hidden="true"
-                    style={{
-                      clipPath: `inset(0 ${
-                        100 - item?.vote_average * 10
-                      }% 0 0)`,
-                    }}
-                  />
-                </div>
+                <StarsRate votes={item?.vote_average} />
                 <div className="" id="vote-average">
                   {item?.vote_average.toFixed(1)}
                 </div>
                 <span> · </span>
                 <div id="reviews">{item?.vote_count} Reviews</div>
-                <span> · </span>
-                <div id="release-date">
-                  {item?.release_date.substring(0, 4)}
-                </div>
+                {item?.release_date && (
+                  <>
+                    <span> · </span>
+                    <div id="release-date">
+                      {item?.release_date.substring(0, 4)}
+                    </div>
+                  </>
+                )}
+                {item?.runtime && (
+                  <>
+                    <span> · </span>
+                    <div className="runtime">{formatTime(item?.runtime)}</div>
+                  </>
+                )}
               </div>
               <p>{item?.overview}</p>
 
@@ -109,4 +102,4 @@ const FeaturedMedia = ({ item }) => {
   );
 };
 
-export default FeaturedMedia;
+export default HeroMedia;

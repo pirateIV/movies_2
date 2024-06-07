@@ -1,27 +1,19 @@
-import { fetchTMDB } from "utils/fetchTMDB";
+import axios from "axios";
+import { TMDB_API_PARAMS, TMDB_API_URL } from "config/tmdbAPi";
 
-/**
- * Get Movie lists
- */
-const getMovies = (query, page = 1) => {
-  return fetchTMDB(`/movie/${query}`, { page });
+export const fetchTMDB = (url, params = {}) => {
+  return axios.get(`${TMDB_API_URL}${url}`, {
+    params: { ...TMDB_API_PARAMS, ...params },
+  });
 };
 
-/**
- * Get Movie by id
- */
-const getMovie = (id) => {
-  return fetchTMDB(`/movie/${id}`, {
+export const listMedia = (type, query, page = 1) => {
+  return fetchTMDB(`/${type}/${query}`, { page });
+};
+
+export const getMedia = (type, id) => {
+  return fetchTMDB(`/${type}/${id}`, {
     append_to_response: "videos,credits,images,external_ids,release_dates",
     include_image_language: "en",
   });
 };
-
-/**
- * Get Tv Shows (listing)
- */
-const getTvShows = (query, page = 1) => {
-  return fetchTMDB(`/tv/${query}`, { page });
-};
-
-export { getMovies, getMovie, getTvShows };
