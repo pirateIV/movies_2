@@ -1,4 +1,4 @@
-const StarsRate = ({votes}) => {
+const StarsRate = ({ votes }) => {
   const style = () => {
     return { clipPath: `inset(0 ${100 - votes * 10}% 0 0)` };
   };

@@ -25,7 +25,7 @@ const MediaItem = ({ item, itemType }) => {
               alt={`movie title: ${item?.title || item?.name || "..."}`}
               srcSet={`${buildURL(imagePath, "400x600")} 1x, ${buildURL(
                 imagePath,
-                "800x1200"
+                "800x1200",
               )} 2x`}
             />
           )}
