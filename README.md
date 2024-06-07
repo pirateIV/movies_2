@@ -43,18 +43,21 @@ A React Movies application using [The Movie Database (TMDb)](https://developers.
 
 ```
 react-movies/
-├── public/                 # Static files
-├── src/                    # Source files
+├── .husky/                 # Husky config. for Git hooks.
+├── public/                 # Static files.
+├── src/                    # Source files.
 │   ├── assets/             # Assets like images, icons, etc.
-│   ├── components/         # React components
-│   ├── config/             # Configuration files
-│   ├── pages/              # Application pages
-│   ├── routes/             # Routes configuration
-│   ├── services/           # Service utilities and API calls
-├── .env.sample             # Sample environment variables
-├── .gitignore              # Git ignore file
-├── package.json            # NPM package configuration
-├── README.md               # Project documentation
+│   ├── components/         # React components.
+│   ├── config/             # Configuration files.
+│   ├── constants/          # Constants and enums.
+│   ├── pages/              # Application pages.
+│   ├── locales/            # Translations.
+│   ├── routes/             # Routes configuration.
+│   ├── services/           # Service utilities and API calls.
+├── .env.sample             # Sample environment variables.
+├── .gitignore              # Git ignore file.
+├── package.json            # NPM package configuration.
+├── README.md               # Project documentation.
 ```
 
 ## Available Scripts
