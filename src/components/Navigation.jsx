@@ -1,15 +1,23 @@
 import { NavLink } from "react-router-dom";
-import links from "constants/links";
+import NAV_LINKS from "constants/links";
 
 const Navigation = () => {
   return (
     <aside>
-      {links.map(({ to, label, activeIcon, defaultIcon }) => (
-        <NavLink key={to} to={to} title={label} aria-label={label}>
+      {NAV_LINKS.map((link) => (
+        <NavLink
+          to={link.to}
+          key={link.to}
+          title={link.label}
+          aria-label={link.label}
+        >
           {({ isActive }) => (
             <div
               className={`${
-                isActive ? `${activeIcon} text-primary` : defaultIcon
+                isActive
+                  ? `${link.activeIcon}
+                 text-primary`
+                  : link.defaultIcon
               } text-xl sm:text-2xl`}
             ></div>
           )}

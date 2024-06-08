@@ -5,7 +5,7 @@ const StarsRate = ({ votes }) => {
 
   return (
     <div
-      className="relative aspect-11/2 w-[6.25rem] *:absolute !opacity-100"
+      className="stars_votes_average"
       style={{
         filter: "hue-rotate(320deg)",
       }}

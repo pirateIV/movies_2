@@ -8,7 +8,11 @@
   }
   /* Sidebar */
   aside {
-    @apply w-full flex items-center bg-black fixed bottom-0 left-0 right-0 order-2 z-50 lg:top-0 lg:bottom-full lg:left-0 lg:order-1 lg:flex-col justify-evenly border-t border-[#1f2123] p-3.5 px-1 sm:p-5 lg:border-t-0 lg:border-r lg:w-[70px] lg:min-h-screen;
+    @apply w-full flex items-center bg-black fixed bottom-0 left-0 right-0 order-2 z-50 lg:top-0 lg:bottom-full lg:left-0 lg:order-1 lg:flex-col justify-evenly border-t border-[#1f2123] p-3.5 px-1 sm:p-5 lg:border-t-0 lg:border-r lg:w-[65px] lg:min-h-screen;
+  }
+
+  .container {
+    @apply min-w-full lg:ml-[65px] lg:min-w-[calc(100%-65px)];
   }
 
   /* featured media */
@@ -67,8 +71,21 @@
   .popular .content img {
     @apply w-full h-full object-cover;
   }
+
+  /* Search */
+  .search-container {
+    @apply min-h-screen text-center;
+  }
+  .search-container .search-box {
+    @apply flex items-center bg-[#9ca3af1a] px-6 py-4 gap-3;
+  }
+
   .movie-title {
     @apply mt-2 text-center sm:text-start text-xs md:text-sm lg:text-base;
+  }
+
+  .stars_votes_average {
+    @apply relative aspect-11/2 w-[6.25rem] *:absolute !opacity-100;
   }
 }
 
