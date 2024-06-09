@@ -1,8 +1,10 @@
 import useDocumentTitle from "hooks/useDocumentTitle";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Search = () => {
   useDocumentTitle("Search: · React Movies");
+  const { t } = useTranslation();
 
   const [searchResults, setSearchResults] = useState(null);
 
@@ -13,7 +15,7 @@ const Search = () => {
           <div className="i-ph:magnifying-glass text-xl opacity-50"></div>
           <input
             type="text"
-            placeholder="Type to search..."
+            placeholder={t("Type to search...")}
             className="w-full text-2xl bg-transparent outline-none"
           />
         </div>
@@ -21,7 +23,7 @@ const Search = () => {
           <></>
         ) : (
           <div className="p-10 text-4xl opacity-50">
-            Type Something to search...
+            {t("Type something to search...")}
           </div>
         )}
       </div>

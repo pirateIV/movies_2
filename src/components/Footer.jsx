@@ -24,7 +24,7 @@ const Footer = () => {
             Data Provided by&nbsp;
           </span>
           <a href="https://themoviedb.org">
-            <img src="/tmdb.svg" width="100" height="55" alt="tmdb logo" />
+            <img src="/tmdb.svg" width="100" height="75" alt="tmdb logo" />
           </a>
         </div>
       </div>
