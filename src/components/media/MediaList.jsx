@@ -1,7 +1,8 @@
 import { useTranslation } from "react-i18next";
 import MediaLink from "./MediaLink";
+import MediaItem from "./MediaItem";
 
-const MediaList = ({ mediaList }) => {
+const MediaList = ({ mediaItems, mediaList }) => {
   const { t } = useTranslation();
 
   return (
@@ -9,20 +10,35 @@ const MediaList = ({ mediaList }) => {
       {mediaList.map((media, i) => (
         <div key={i} className="popular">
           <div className="header">
-            <h1>{media.title}</h1>
+            <h1>{t(media.title)}</h1>
             <MediaLink media={media}>{t("Explore more")}</MediaLink>
           </div>
-          <div className="content">
-            <MediaLink media={media}>
-              <div className="media-item">
-                <div className="flex flex-col items-center justify-around opacity-80 translate-y-1/2">
+          <div id="media-items-scroller">
+            <div className="content">
+              {media.type === "movie" &&
+                mediaItems?.movies.map((item) => (
+                  <MediaItem key={item?.id} item={item} />
+                ))}
+              {media.type === "tv" &&
+                mediaItems?.tv.map((item) => (
+                  <MediaItem key={item?.id} item={item} />
+                ))}
+              <MediaLink media={media}>
+                <div className="media-item">
                   <div
-                    className={`${media.type === "movie" ? "i-ph-film-strip" : "i-ph-television-simple"} text-4xl`}
-                  ></div>
-                  <div>{t("Explore more")}</div>
+                    className="flex flex-col items-center justify-around opacity-40 translate-y-1/2"
+                    aria-hidden={true}
+                  >
+                    <div
+                      className={`${media.type === "movie" ? "i-ph-film-strip" : "i-ph-television-simple"} text-lg sm:text-2xl lg:text-4xl`}
+                    ></div>
+                    <div className="text-xl sm:text-base">
+                      {t("Explore more")}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </MediaLink>
+              </MediaLink>
+            </div>
           </div>
         </div>
       ))}

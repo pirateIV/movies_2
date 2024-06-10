@@ -1,8 +1,11 @@
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { QUERY_LIST } from "constants/lists";
 import Footer from "./Footer";
 import HeroMedia from "./media/HeroMedia";
 import MediaList from "./media/MediaList";
-import { QUERY_LIST } from "constants/lists";
+import { listMedia } from "services/tmdbAPI";
+import { list } from "postcss";
 
 const queries = [QUERY_LIST.movie[0], QUERY_LIST.tv[0]];
 
@@ -23,11 +26,34 @@ const Container = ({ children }) => {
 
   const filteredQueries = getFilteredQueries();
 
+  const [mediaItems, setMediaItems] = useState({ movies: [], tv: [] });
+
+  useEffect(() => {
+    const getMedia = async () => {
+      try {
+        const [movies, tv] = await Promise.all([
+          listMedia(queries[0].type, "popular"),
+          listMedia(queries[1].type, "popular"),
+        ]);
+        setMediaItems({
+          movies: movies?.data?.results || [],
+          tv: tv?.data?.results || [],
+        });
+        console.log(mediaItems);
+      } catch (error) {
+        console.error("Error fetching media: ", error);
+      }
+    };
+    getMedia();
+  }, []);
+
   return (
     <div id="app-scroller">
       <div>
         {removeOnSearch(<HeroMedia />)}
-        {removeOnSearch(<MediaList mediaList={filteredQueries} />)}
+        {removeOnSearch(
+          <MediaList mediaItems={mediaItems} mediaList={filteredQueries} />,
+        )}
         {children}
         {removeOnSearch(<Footer />)}
       </div>

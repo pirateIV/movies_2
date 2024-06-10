@@ -1,8 +1,6 @@
 import Imgix from "react-imgix";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { motion, useAnimation } from "framer-motion";
 
 import { formatTime } from "utils/filters";
 import StarsRate from "components/StarsRate";
@@ -10,31 +8,16 @@ import StarsRate from "components/StarsRate";
 const HeroMedia = ({ item }) => {
   const { t } = useTranslation();
 
-  const [showContent, setShowContent] = useState(false);
-  const contentAnimation = useAnimation();
-
-  useEffect(() => {
-    setShowContent(true);
-    contentAnimation.start({ opacity: 1 });
-  }, [contentAnimation]);
-
   const buildURL = (imagePath) =>
     `https://image.tmdb.org/t/p/w780/${imagePath}`;
 
   return (
     <Link
+      id="featured"
       to={`movie/${item?.id}`}
       aria-label={item?.title || "link to movie"}
-      id="featured"
     >
-      <motion.div
-        className={`featured-container aspect-3/2 lg:aspect-25/9 ${
-          showContent ? "fade-in" : ""
-        }`}
-        initial={{ opacity: 0 }}
-        animate={contentAnimation}
-        transition={{ duration: 2 }}
-      >
+      <div className="featured-container aspect-3/2 lg:aspect-25/9">
         <div className="featured-content">
           <div className="absolute p-10 top-0 xs:left-0 right-0 lg:hidden max-w-[300px]:right-0">
             <button
@@ -101,7 +84,7 @@ const HeroMedia = ({ item }) => {
             />
           ) : null}
         </div>
-      </motion.div>
+      </div>
     </Link>
   );
 };

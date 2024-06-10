@@ -12,7 +12,7 @@ body {
     @apply font-sans;
   }
   #app-scroller{
-    @apply max-h-[calc(100vh-60px)] lg:max-h-screen flex-1 overflow-auto order-2 lg:order-1;
+    @apply max-h-[calc(100vh-60px)] lg:max-h-screen flex-1 overflow-y-auto overflow-x-hidden order-2 lg:order-1;
   }
   
   /* Sidebar */
@@ -63,8 +63,11 @@ body {
   .popular .header a {
     @apply text-xs md:text-base text-[#777] opacity-95 hover:text-[#40c1ad];
   }
+  .popular #media-items-scroller {
+    @apply overflow-x-scroll;
+  }
   .popular .content {
-    @apply flex gap-2 w-max p-2 px-10 md:px-10;
+    @apply flex w-max gap-2 p-2 px-10 md:px-10;
   }
   .popular .content a {
     @apply flex-1 pb-2 w-40 md:w-60;
