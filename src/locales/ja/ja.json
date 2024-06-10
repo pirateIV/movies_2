@@ -6,17 +6,13 @@
   "Popular TV Shows": "人気のテレビ番組",
   "Top Rated TV Shows": "評価の高いテレビ番組",
   "TV Shows Airing Today": "今日放送中のテレビ番組",
-
   "Watch Trailer": "予告編を見ます",
   "Explore more": "もっと見る",
-
   "Overview": "概要",
   "Videos": "動画",
   "Media Photos": "写真",
-
   "Cast": "キャスト",
   "More like this": "似ている",
-
   "Storyline": "ストーリー",
   "Release Date": "リリース",
   "Runtime": "上映時間",
@@ -27,10 +23,8 @@
   "Status": "状態",
   "Language": "言語",
   "Production": "製作",
-
   "Backdrops": "背景",
   "Posters": "ポスター",
-
   "Known For": "知られている",
   "Credits": "クレジット",
   "Person Photos": "写真",
@@ -38,20 +32,14 @@
   "Known for": "知られている",
   "Place of birth": "出生地",
   "Birthday": "生年月日",
-
   "Acting Credits": "出演",
   "Production Credits": "製作",
-
   "Type to search...": "検索",
   "Type something to search...": "何かを入力して検索する",
-
   "{numberOfReviews} Reviews": "{numberOfReviews}レビュー",
-
   "{numberOfImages} Images": "{numberOfImages}枚写真",
   "{numberOfVideos} Videos": "{numberOfVideos}本動画",
-
-  "as {character}": "演 {character}",
-
+  "as{character}": "演{character}",
   "{count} items": "{count}件",
-  "Search result for: {currentSearch}": "「{currentSearch}」の検索結果 "
+  "Search result for:{currentSearch}": "「{currentSearch}」の検索結果"
 }

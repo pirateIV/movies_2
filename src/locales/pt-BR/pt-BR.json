@@ -6,17 +6,13 @@
   "Popular TV Shows": "Séries Populares",
   "Top Rated TV Shows": "Séries com Melhor Classificação",
   "TV Shows Airing Today": "Séries exibidas hoje",
-
   "Watch Trailer": "Ver Trailer",
   "Explore more": "Explore mais",
-
   "Overview": "Visão geral",
   "Videos": "Vídeos",
   "Media Photos": "Fotos",
-
   "Cast": "Elenco",
   "More like this": "Mais itens semelhantes",
-
   "Storyline": "Enredo",
   "Release Date": "Data de lançamento",
   "Runtime": "Tempo de duração",
@@ -27,10 +23,8 @@
   "Status": "Estado",
   "Language": "Idioma",
   "Production": "Produção",
-
   "Backdrops": "Imagens de fundo",
   "Posters": "Pôsteres",
-
   "Known For": "Reconhecido(a) por",
   "Credits": "Creditado(a) em",
   "Person Photos": "Fotos",
@@ -38,23 +32,16 @@
   "Known for": "Reconhecido(a) por",
   "Place of birth": "Local de nascimento",
   "Birthday": "Nascimento",
-
   "Acting Credits": "Créditos de Atuação",
   "Production Credits": "Créditos de Produção",
-
   "Type to search...": "Pesquisa...",
   "Type something to search...": "Digite algo para pesquisar...",
-
   "{numberOfReviews} Reviews": "{numberOfReviews} Avaliações",
-
   "{numberOfImages} Images": "{numberOfImages} Imagens",
   "{numberOfVideos} Videos": "{numberOfVideos} Vídeos",
-
-  "as {character}": "como {character}",
-
+  "as{character}": "como{character}",
   "{count} items": "{count} itens",
-  "Search result for: {currentSearch}": "Resultados da procura por: {currentSearch}",
-
+  "Search result for:{currentSearch}": "Resultados da procura por:{currentSearch}",
   "Error occurred on fetching": "Ocorreu um erro na busca",
   "Retry": "Tentar novamente"
 }

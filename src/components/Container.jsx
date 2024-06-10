@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { QUERY_LIST } from "constants/lists";
+
 import Footer from "./Footer";
 import HeroMedia from "./media/HeroMedia";
 import MediaList from "./media/MediaList";
 import { listMedia } from "services/tmdbAPI";
-import { list } from "postcss";
 
 const queries = [QUERY_LIST.movie[0], QUERY_LIST.tv[0]];
 
@@ -50,7 +50,7 @@ const Container = ({ children }) => {
   return (
     <div id="app-scroller">
       <div>
-        {removeOnSearch(<HeroMedia />)}
+        {removeOnSearch(<HeroMedia item={mediaItems?.movies[0]} />)}
         {removeOnSearch(
           <MediaList mediaItems={mediaItems} mediaList={filteredQueries} />,
         )}

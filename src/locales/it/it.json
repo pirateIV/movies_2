@@ -6,17 +6,13 @@
   "Popular TV Shows": "TV Shows Popolari",
   "Top Rated TV Shows": "TV Shows Più Votati",
   "TV Shows Airing Today": "TV Shows in Onda",
-
   "Watch Trailer": "Guarda Trailer",
   "Explore more": "Scopri di più",
-
   "Overview": "Panoramica",
   "Videos": "Video",
   "Media Photos": "Foto",
-
   "Cast": "Cast",
   "More like this": "Simili",
-
   "Storyline": "Trama",
   "Release Date": "Data di Uscita",
   "Runtime": "Durata",
@@ -27,10 +23,8 @@
   "Status": "Stato",
   "Language": "Lingua",
   "Production": "Produzione",
-
   "Backdrops": "Sfondi",
   "Posters": "Poster",
-
   "Known For": "Conosciuto Per",
   "Credits": "Crediti",
   "Person Photos": "Foto",
@@ -38,23 +32,16 @@
   "Known for": "Conosciuto per",
   "Place of birth": "Luogo di nascita",
   "Birthday": "Compleanno",
-
   "Acting Credits": "Attore",
   "Production Credits": "Produzione",
-
   "Type to search...": "Scrivi per cercare...",
   "Type something to search...": "Scrivi qualcosa per cercare...",
-
   "{numberOfReviews} Reviews": "{numberOfReviews} Recensioni",
-
   "{numberOfImages} Images": "{numberOfImages} Immagini",
   "{numberOfVideos} Videos": "{numberOfVideos} Video",
-
-  "as {character}": "come {character}",
-
+  "as{character}": "come{character}",
   "{count} items": "{count} risultati",
-  "Search result for: {currentSearch}": "Risultati per: {currentSearch}",
-
+  "Search result for:{currentSearch}": "Risultati per:{currentSearch}",
   "Error occurred on fetching": "C'è stato un errore nel caricamento",
   "Retry": "Riprova"
 }

@@ -1,7 +1,6 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
-// translations
 import de from "locales/de-DE/de-DE.json";
 import en from "locales/en/en.json";
 import es from "locales/es-ES/es-ES.json";
@@ -14,37 +13,18 @@ import zh from "locales/zh-CN/zh-CN.json";
 
 i18n.use(initReactI18next).init({
   fallbackLng: "en",
-  debug: true,
+  debug: !0,
   lng: "en",
   resources: {
-    "de-DE": {
-      translation: de,
-    },
-    en: {
-      translation: en,
-    },
-    "es-ES": {
-      translation: es,
-    },
-    "fr-FR": {
-      translation: fr,
-    },
-    it: {
-      translation: it,
-    },
-    ja: {
-      translation: ja,
-    },
-    "pt-BR": {
-      translation: pt_b,
-    },
-    "pt-PT": {
-      translation: pt_p,
-    },
-    "zh-CN": {
-      translation: zh,
-    },
+    "de-DE": { translation: de },
+    en: { translation: en },
+    "es-ES": { translation: es },
+    "fr-FR": { translation: fr },
+    it: { translation: it },
+    ja: { translation: ja },
+    "pt-BR": { translation: pt_b },
+    "pt-PT": { translation: pt_p },
+    "zh-CN": { translation: zh },
   },
 });
-
 export default i18n;
