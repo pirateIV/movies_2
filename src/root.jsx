@@ -4,7 +4,7 @@ import MainContent from "components/MainContent";
 const root = () => {
   return (
     <>
-      <div className="relative">
+      <div className="flex flex-col-reverse lg:flex-row-reverse">
         <Navigation />
         <MainContent />
       </div>

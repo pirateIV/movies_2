@@ -24,11 +24,13 @@ const Container = ({ children }) => {
   const filteredQueries = getFilteredQueries();
 
   return (
-    <div className="movie_container">
-      {removeOnSearch(<HeroMedia />)}
-      {removeOnSearch(<MediaList mediaList={filteredQueries} />)}
-      {children}
-      {removeOnSearch(<Footer />)}
+    <div id="app-scroller">
+      <div>
+        {removeOnSearch(<HeroMedia />)}
+        {removeOnSearch(<MediaList mediaList={filteredQueries} />)}
+        {children}
+        {removeOnSearch(<Footer />)}
+      </div>
     </div>
   );
 };

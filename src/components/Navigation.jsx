@@ -1,15 +1,18 @@
 import { NavLink } from "react-router-dom";
 import NAV_LINKS from "constants/links";
+import { useTranslation } from "react-i18next";
 
 const Navigation = () => {
+  const { t } = useTranslation();
+
   return (
     <aside>
       {NAV_LINKS.map((link) => (
         <NavLink
           to={link.to}
           key={link.to}
-          title={link.label}
-          aria-label={link.label}
+          title={t(link.label)}
+          aria-label={t(link.label)}
         >
           {({ isActive }) => (
             <div

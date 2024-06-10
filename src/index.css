@@ -2,17 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  max-height: 100vh;
+  overflow: hidden;
+}
+
 @layer base {
   * {
     @apply font-sans;
   }
+  #app-scroller{
+    @apply max-h-[calc(100vh-60px)] lg:max-h-screen flex-1 overflow-auto order-2 lg:order-1;
+  }
+  
   /* Sidebar */
   aside {
-    @apply w-full flex items-center bg-black fixed bottom-0 left-0 right-0 order-2 z-50 lg:top-0 lg:bottom-full lg:left-0 lg:order-1 lg:flex-col justify-evenly border-t border-[#1f2123] p-3.5 px-1 sm:p-5 lg:border-t-0 lg:border-r lg:w-[65px] lg:min-h-screen;
-  }
-
-  .movie_container {
-    @apply min-w-full lg:ml-[65px] lg:min-w-[calc(100%-65px)];
+    @apply flex justify-around items-center py-0 min-h-16 order-1 bg-black border-t border-[#1f2123] min-w-full lg:py-10 flex-1 lg:flex-col lg:min-w-[65px] lg:order-2 lg:flex-none lg:min-h-screen lg:border-t-0 lg:border-r;
   }
 
   /* featured media */

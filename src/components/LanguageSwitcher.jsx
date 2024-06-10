@@ -1,16 +1,51 @@
-// import { use } from "i18next";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import useLocalStorage from "hooks/useLocalStorage";
+
+export const languages = [
+  { value: "de-DE", name: "Deutsch" },
+  { value: "en", name: "English" },
+  { value: "es-ES", name: "Español" },
+  { value: "fr-FR", name: "Français" },
+  { value: "it", name: "Italiano" },
+  { value: "ja", name: "日本語" },
+  { value: "pt-BR", name: "Português (Brasil)" },
+  { value: "pt-PT", name: "Português (Portugal)" },
+  { value: "zh", name: "中文" },
+];
 
 const LanguageSwitcher = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [language, setLanguage] = useLocalStorage("i18nextLng", "en");
 
-  console.log(i18n.language);
+  useEffect(() => {
+    i18n.changeLanguage(language);
+  }, [language, i18n]);
+
+  const changeLanguage = (lng) => {
+    setLanguage(lng);
+    i18n.changeLanguage(lng);
+  };
 
   return (
     <div>
-      Language:&nbsp;
-      <select id="langSwitcher" className="rounded text-sm p-1">
-        {/*   */}
+      <label
+        htmlFor="langSwitcher"
+        className="text-sm sm:text-base text-gray-200"
+      >
+        {t("Language")}:&nbsp;
+      </label>
+      <select
+        id="langSwitcher"
+        className="rounded text-sm p-1"
+        defaultValue={language}
+        onChange={(e) => changeLanguage(e.target.value)}
+      >
+        {languages.map((lang) => (
+          <option key={lang.code} value={lang.value}>
+            {lang.name}
+          </option>
+        ))}
       </select>
     </div>
   );
