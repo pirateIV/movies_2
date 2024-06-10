@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import Root from "root";
-import TvShow from "@pages/tv/TvShow";
+import TV from "@pages/tv/TV";
 import Movies from "@pages/movies/Movies";
 import Search from "@pages/search/Search";
 
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/tv",
-        element: <TvShow />,
+        element: <TV />,
         children: [
           {
             path: "/tv/:tvId",

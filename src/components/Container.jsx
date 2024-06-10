@@ -1,38 +1,36 @@
-// import { useState, useEffect } from "react";
-// import { useTranslation } from "react-i18next";
-// import HeroMedia from "./media/HeroMedia";
-// import MediaContainer from "./MediaContainer";
-// import { getMedia, listMedia } from "services/tmdbAPI";
+import { useLocation } from "react-router-dom";
+import Footer from "./Footer";
+import HeroMedia from "./media/HeroMedia";
+import MediaList from "./media/MediaList";
+import { QUERY_LIST } from "constants/lists";
 
-// const Container = ({ children }) => {
-//   return (
-//     <div className="relative w-full flex flex-col pb-[70px] lg:pb-0 items-end justify-end overflow-hidden">
-//       {children}
-//     </div>
-//   );
-// };
+const queries = [QUERY_LIST.movie[0], QUERY_LIST.tv[0]];
 
-// export const MainContent = ({ movies, tvShows }) => {
-//   const { t } = useTranslation();
+const Container = ({ children }) => {
+  const location = useLocation();
 
-//   return (
-//     <div className="min-h-screen w-full lg:max-w-[calc(100%-70px)]">
-//       <div className="min-h-screen">
-//         <MediaContainer
-//           items={movies}
-//           itemType="movie"
-//           title={t("Popular Movies")}
-//           exploreLink="/movie/category/popular"
-//         />
+  const removeOnSearch = (component) =>
+    !location.pathname.includes("search") && component;
 
-//         <MediaContainer
-//           items={tvShows}
-//           itemType="tv"
-//           title={t("Popular TV Shows")}
-//           exploreLink="/tv/category/popular"
-//         />
-//       </div>
-//     </div>
-//   );
-// };
-// export default Container;
+  const getFilteredQueries = () => {
+    if (location.pathname.includes("movie")) {
+      return [queries[0]];
+    } else if (location.pathname.includes("tv")) {
+      return [queries[1]];
+    }
+    return queries;
+  };
+
+  const filteredQueries = getFilteredQueries();
+
+  return (
+    <div className="movie_container">
+      {removeOnSearch(<HeroMedia />)}
+      {removeOnSearch(<MediaList mediaList={filteredQueries} />)}
+      {children}
+      {removeOnSearch(<Footer />)}
+    </div>
+  );
+};
+
+export default Container;

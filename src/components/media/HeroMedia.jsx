@@ -22,7 +22,11 @@ const HeroMedia = ({ item }) => {
     `https://image.tmdb.org/t/p/w780/${imagePath}`;
 
   return (
-    <Link to={`movie/${item?.id}`} id="featured">
+    <Link
+      to={`movie/${item?.id}`}
+      aria-label={item?.title || "link to movie"}
+      id="featured"
+    >
       <motion.div
         className={`featured-container aspect-3/2 lg:aspect-25/9 ${
           showContent ? "fade-in" : ""
