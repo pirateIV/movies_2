@@ -15,7 +15,7 @@ const MediaList = ({ mediaList }) => {
           <div className="content">
             <MediaLink media={media}>
               <div className="media-item">
-                <div className="flex flex-col items-center justify-around opacity-45 translate-y-1/2">
+                <div className="flex flex-col items-center justify-around opacity-80 translate-y-1/2">
                   <div
                     className={`${media.type === "movie" ? "i-ph-film-strip" : "i-ph-television-simple"} text-4xl`}
                   ></div>

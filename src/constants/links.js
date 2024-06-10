@@ -1,4 +1,4 @@
-import "@assets/css/_icons.css";
+import "@assets/css/__base.css";
 
 // prettier-ignore
 export default [
