@@ -4,7 +4,7 @@ import { Link, useLocation, useOutlet } from "react-router-dom";
 import { QUERY_LIST } from "constants/lists";
 import { useTranslation } from "react-i18next";
 
-const media_list = [QUERY_LIST.movie[0], QUERY_LIST.tv[0]];
+const queries = [QUERY_LIST.movie[0], QUERY_LIST.tv[0]];
 
 const MainContent = () => {
   const outlet = useOutlet();
@@ -18,7 +18,7 @@ const MainContent = () => {
     <div className="container">
       {shouldShowComponent(<HeroMedia />)}
       {!outlet
-        ? media_list.map((media) => (
+        ? queries.map((media) => (
             <div className="popular">
               <div className="header">
                 <h1>{media.title}</h1>
@@ -27,7 +27,14 @@ const MainContent = () => {
                 </Link>
               </div>
               <div className="content">
-                <ul></ul>
+                <Link to={`category/${media.query}`}>
+                  <div className="media-item flex items-center">
+                    <div className="flex flex-col items-center justify-around opacity-45 translate-y-1/2">
+                      <div className="i-ph-film-strip text-4xl"></div>
+                      <div>{t("Explore more")}</div>
+                    </div>
+                  </div>
+                </Link>
               </div>
             </div>
           ))
