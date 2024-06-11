@@ -4,6 +4,7 @@ import Root from "root";
 import TV from "@pages/tv/TV";
 import Movies from "@pages/movies/Movies";
 import Search from "@pages/search/Search";
+import NotFound from "@pages/404/404";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,22 @@ const router = createBrowserRouter([
             path: "/movie/:movieId",
             element: <Movies />,
           },
+          {
+            path: "/movie/category/popular",
+            element: null,
+          },
+          {
+            path: "/movie/category/top_rated",
+            element: null,
+          },
+          {
+            path: "/movie/category/upcoming",
+            element: null,
+          },
+          {
+            path: "/movie/category/now_playing",
+            element: null,
+          },
         ],
       },
       {
@@ -28,6 +45,18 @@ const router = createBrowserRouter([
             path: "/tv/:tvId",
             element: <Movies />,
           },
+          {
+            path: "/tv/category/popular",
+            element: null,
+          },
+          {
+            path: "/tv/category/top_rated",
+            element: null,
+          },
+          {
+            path: "/tv/category/airing_today",
+            element: null,
+          },
         ],
       },
       {
@@ -35,6 +64,10 @@ const router = createBrowserRouter([
         element: <Search />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 

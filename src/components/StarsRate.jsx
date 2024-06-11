@@ -1,11 +1,11 @@
-const StarsRate = ({ votes }) => {
+const StarsRate = ({ votes, className }) => {
   const style = () => {
     return { clipPath: `inset(0 ${100 - votes * 10}% 0 0)` };
   };
 
   return (
     <div
-      className="stars_votes_average"
+      className={`stars_votes_average ${className}`}
       style={{
         filter: "hue-rotate(320deg)",
       }}

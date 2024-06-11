@@ -28,11 +28,16 @@ const MediaItem = ({ item, itemType }) => {
             />
           )}
         </div>
-        <div className="movie-title">{item?.title || item?.name || "..."}</div>
-        <div className="flex items-center text-sm gap-5">
-          <StarsRate votes={item?.vote_average} />{" "}
-          <div className="opacity-60">{item?.vote_average.toFixed(1)}</div>
-        </div>
+        <div className="movie-title">{item?.title || item?.name || "..."}</div>{" "}
+        <div className="flex text-sm gap-5">
+          <div>
+            <StarsRate
+              className="aspect-[12/2] !w-[90px]"
+              votes={item?.vote_average}
+            />
+          </div>
+          <span className="opacity-60">{item?.vote_average.toFixed(1)}</span>
+        </div>{" "}
       </Link>
     </>
   );

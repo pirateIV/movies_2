@@ -1,26 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 body {
   max-height: 100vh;
   overflow: hidden;
 }
-
 @layer base {
   * {
     @apply font-sans;
   }
-  #app-scroller{
+  #app-scroller {
     @apply max-h-[calc(100vh-60px)] lg:max-h-screen flex-1 overflow-y-auto overflow-x-hidden order-2 lg:order-1;
   }
-  
-  /* Sidebar */
   aside {
     @apply flex justify-around items-center py-0 min-h-16 order-1 bg-black border-t border-[#1f2123] min-w-full lg:py-10 flex-1 lg:flex-col lg:min-w-[65px] lg:order-2 lg:flex-none lg:min-h-screen lg:border-t-0 lg:border-r;
   }
-
-  /* featured media */
   #featured {
     @apply w-full h-full;
   }
@@ -28,7 +22,7 @@ body {
     @apply relative flex items-center flex-col lg:flex-row justify-between;
   }
   #featured .featured-content {
-    @apply px-10 lg:px-[6.25rem]  absolute z-20 top-0 bottom-0 flex flex-col items-start justify-center h-full w-full lg:w-2/3 space-y-4;
+    @apply px-10 lg:px-[6.25rem] absolute z-20 top-0 bottom-0 flex flex-col items-start justify-center h-full w-full lg:w-2/3 space-y-4;
     background-image: linear-gradient(
       to top,
       rgb(0 0 0 / 1) 0%,
@@ -48,8 +42,6 @@ body {
   #featured button#watch_trailer {
     @apply hidden sm:inline-flex items-center gap-2.5 px-6 py-3 transition-colors bg-[#17181a] hover:bg-[#292a2d];
   }
-
-  /*  Media  */
   .popular {
     @apply py-1 sm:py-5 min-h-80;
     background: linear-gradient(to right, #111, 60%, #000);
@@ -73,30 +65,25 @@ body {
     @apply flex-1 pb-2 w-40 md:w-60;
   }
   .popular .media-item {
-    @apply block p-0.5 sm:p-1 aspect-[10/16]  bg-[#202124] hover:scale-105;
+    @apply block p-0.5 sm:p-1 aspect-[10/16] bg-[#202124] hover:scale-105;
     transition: transform 0.4s ease;
   }
   .popular .content img {
     @apply w-full h-full object-cover;
   }
-
-  /* Search */
   .search-container {
     @apply min-h-screen text-center;
   }
   .search-container .search-box {
     @apply flex items-center bg-[#9ca3af1a] px-6 py-4 gap-3;
   }
-
   .movie-title {
     @apply mt-2 text-center sm:text-start text-xs md:text-sm lg:text-base;
   }
-
   .stars_votes_average {
-    @apply relative aspect-11/2 w-[6.25rem] *:absolute !opacity-100;
+    @apply relative w-[6.25rem] *:absolute !opacity-100;
   }
 }
-
 @media (min-width: 1024px) {
   #featured .featured-content {
     background-image: linear-gradient(
