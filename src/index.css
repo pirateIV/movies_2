@@ -75,13 +75,16 @@ body {
     @apply min-h-screen text-center;
   }
   .search-container .search-box {
-    @apply flex items-center bg-[#9ca3af1a] px-6 py-4 gap-3;
+    @apply flex flex-row-reverse items-center bg-[#9ca3af1a] px-6 py-4 gap-3;
   }
   .movie-title {
     @apply mt-2 text-center sm:text-start text-xs md:text-sm lg:text-base;
   }
   .stars_votes_average {
     @apply relative w-[6.25rem] *:absolute !opacity-100;
+  }
+  .footer-icon {
+    @apply opacity-40 hover:opacity-100 transition-opacity;
   }
 }
 @media (min-width: 1024px) {

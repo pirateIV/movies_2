@@ -13,15 +13,6 @@ const Footer = () => {
         </div>
 
         <div>
-          <div className="inline-flex items-center gap-2  my-2">
-            <span className="text-xs sm:text-sm text-gray-300/60">
-              Made with&nbsp;
-            </span>
-            <img src="/R.png" width="75" height="25" alt="react logo" />
-          </div>
-        </div>
-
-        <div>
           <div className="inline-flex items-center gap-2 my-2">
             <span className="text-xs sm:text-sm text-gray-300/60">
               Data Provided by&nbsp;
@@ -44,7 +35,6 @@ const Footer = () => {
             <IconTwitter />
             <IconGithub />
             <IconVercel />
-
             <LanguageSwitcher />
           </div>
         </div>

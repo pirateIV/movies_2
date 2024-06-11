@@ -37,12 +37,12 @@ const LanguageSwitcher = () => {
       </label>
       <select
         id="langSwitcher"
-        className="rounded text-sm p-1"
+        className="p-1 text-sm rounded"
         defaultValue={language}
         onChange={(e) => changeLanguage(e.target.value)}
       >
         {languages.map((lang) => (
-          <option key={lang.code} value={lang.value}>
+          <option key={lang.value} value={lang.value}>
             {lang.name}
           </option>
         ))}

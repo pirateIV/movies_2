@@ -12,12 +12,13 @@ const Search = () => {
     <div className="search-container">
       <div>
         <div className="search-box">
-          <div className="i-ph:magnifying-glass text-xl opacity-50"></div>
           <input
             type="text"
             placeholder={t("Type to search...")}
-            className="w-full text-2xl bg-transparent outline-none"
+            className="peer w-full text-2xl bg-transparent outline-none"
+            autoFocus="true"
           />
+          <div className="i-ph:magnifying-glass text-xl opacity-50 transition-opacity peer-focus:opacity-100"></div>
         </div>
         {searchResults ? (
           <></>

@@ -6,7 +6,7 @@ const IconGithub = () => {
       aria-label="Link to Github account"
       rel="nopener"
     >
-      <div className="i-simple-icons:github"></div>
+      <div className="footer-icon i-simple-icons:github"></div>
     </a>
   );
 };

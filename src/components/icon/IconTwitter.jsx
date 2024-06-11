@@ -6,7 +6,7 @@ const IconTwitter = () => {
       aria-label="Link to Twitter account"
       rel="nopener"
     >
-      <div className="i-simple-icons:twitter"></div>
+      <div className="footer-icon i-simple-icons:twitter"></div>
     </a>
   );
 };
