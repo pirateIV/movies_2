@@ -1,4 +1,4 @@
-const StarsRate = ({ votes, className }) => {
+const StarRatings = ({ votes, className }) => {
   const style = () => {
     return { clipPath: `inset(0 ${100 - votes * 10}% 0 0)` };
   };
@@ -21,4 +21,4 @@ const StarsRate = ({ votes, className }) => {
   );
 };
 
-export default StarsRate;
+export default StarRatings;

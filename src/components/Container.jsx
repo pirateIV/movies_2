@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { QUERY_LIST } from "constants/lists";
-
-import Footer from "./Footer";
+import { listMedia } from "services/tmdbAPI";
 import HeroMedia from "./media/HeroMedia";
 import MediaList from "./media/MediaList";
-import { listMedia } from "services/tmdbAPI";
+import Footer from "./Footer";
 
 const queries = [QUERY_LIST.movie[0], QUERY_LIST.tv[0]];
 

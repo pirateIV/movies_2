@@ -1,5 +1,7 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import MediaItemImage from "./item/MediaItemImage";
+import MediaItemTitle from "./item/MediaItemTitle";
+import MediaItemRating from "./item/MediaItemRating";
 
 const MediaItem = ({ item, itemType }) => {
   const {

@@ -2,9 +2,8 @@ import React from "react";
 import Imgix from "react-imgix";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-
 import { formatTime } from "utils/filters";
-import StarsRate from "components/StarsRate";
+import StarRatings from "components/StarRatings";
 
 const HeroMedia = ({ item }) => {
   const { t } = useTranslation();
@@ -17,7 +16,7 @@ const HeroMedia = ({ item }) => {
 
     return (
       <div className="flex items-center gap-2 *:opacity-60 *:inset-y-0">
-        <StarsRate className="aspect-11/2" votes={item?.vote_average} />
+        <StarRatings className="aspect-11/2" votes={item?.vote_average} />
         <div id="vote-average">{item?.vote_average.toFixed(1)}</div>
         <div id="reviews">
           <span> · </span>
