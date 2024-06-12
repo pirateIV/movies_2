@@ -81,7 +81,7 @@ body {
     @apply mt-2 text-center sm:text-start text-xs md:text-sm lg:text-base;
   }
   .stars_votes_average {
-    @apply relative w-[6.25rem] *:absolute !opacity-100;
+    @apply relative !opacity-100;
   }
   .footer-icon {
     @apply opacity-40 hover:opacity-100 transition-opacity;
@@ -96,4 +96,15 @@ body {
       transparent 100%
     );
   }
+}
+
+.star-mask {
+  -webkit-mask-image: url('/stars-filled.webp');
+  mask-image: url('/stars-filled.webp');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  background-color: green;
+  filter: hue-rotate(320deg);
 }

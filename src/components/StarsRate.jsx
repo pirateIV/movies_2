@@ -5,13 +5,18 @@ const StarsRate = ({ votes, className }) => {
 
   return (
     <div
-      className={`stars_votes_average ${className}`}
+      className={`stars_votes_average w-[6.25rem] ${className}`}
       style={{
         filter: "hue-rotate(320deg)",
       }}
     >
       <img src="/stars.webp" aria-hidden="true" />
-      <img src="/stars-filled.webp" aria-hidden="true" style={style()} />
+      <img
+        src="/stars-filled.webp"
+        className="absolute inset-0"
+        aria-hidden="true"
+        style={style()}
+      />
     </div>
   );
 };

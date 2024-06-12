@@ -1,45 +1,25 @@
-import StarsRate from "components/StarsRate";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const buildURL = (imagePath, size) =>
-  `https://movies-proxy.vercel.app/ipx/f_webp&s_${size}/tmdb/${imagePath}`;
-
 const MediaItem = ({ item, itemType }) => {
-  const imagePath = item?.poster_path;
+  const {
+    poster_path: imagePath,
+    title,
+    name,
+    vote_average: voteAverage,
+    id,
+  } = item;
+  const displayTitle = title || name || "...";
 
   return (
-    <>
-      <Link
-        to={`/${itemType}/${item.id}`}
-        className="block flex-1 pb-2 w-28 sm:w-40 md:w-60"
-      >
-        <div className="media-item">
-          {imagePath && (
-            <img
-              width="400"
-              height="600"
-              src={buildURL(imagePath, "400x600")}
-              srcSet={`${buildURL(imagePath, "400x600")} 1x, ${buildURL(
-                imagePath,
-                "800x1200",
-              )} 2x`}
-              alt={`movie title: ${item?.title || item?.name || "..."}`}
-            />
-          )}
-        </div>
-        <div className="movie-title">{item?.title || item?.name || "..."}</div>{" "}
-        <div className="flex text-sm gap-5">
-          <div>
-            <StarsRate
-              className="aspect-[12/2] !w-[90px]"
-              votes={item?.vote_average}
-            />
-          </div>
-          <span className="opacity-60">{item?.vote_average.toFixed(1)}</span>
-        </div>{" "}
-      </Link>
-    </>
+    <Link
+      to={`/${itemType}/${id}`}
+      className="block flex-1 pb-2 w-28 sm:w-40 md:w-60"
+    >
+      <MediaItemImage imagePath={imagePath} title={displayTitle} />
+      <MediaItemTitle title={displayTitle} />
+      <MediaItemRating voteAverage={voteAverage} />
+    </Link>
   );
 };
 
