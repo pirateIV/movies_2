@@ -1,11 +1,12 @@
 import { useTranslation } from "react-i18next";
 import MediaLink from "./MediaLink";
 import MediaItem from "./MediaItem";
+import { QUERY_LIST } from "constants/lists";
+
+const COMBINED_MEDIA_LIST = [...QUERY_LIST.movie, ...QUERY_LIST.tv];
 
 const MediaList = ({ mediaItems, mediaList }) => {
   const { t } = useTranslation();
-
-  console.log(mediaList);
 
   return (
     <>
@@ -48,7 +49,7 @@ const MediaList = ({ mediaItems, mediaList }) => {
                 ))}
 
               {media.title === "TV Shows Airing Today" &&
-                mediaItems?.tv.map((item) => (
+                mediaItems?.airing_today.map((item) => (
                   <MediaItem key={item?.id} item={item} itemType={media.type} />
                 ))}
               <MediaLink media={media}>
