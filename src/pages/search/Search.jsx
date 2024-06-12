@@ -1,6 +1,6 @@
-import useDocumentTitle from "hooks/useDocumentTitle";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import useDocumentTitle from "hooks/useDocumentTitle";
 
 const Search = () => {
   useDocumentTitle("Search · React Movies");

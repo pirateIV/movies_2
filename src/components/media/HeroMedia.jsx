@@ -2,6 +2,7 @@ import React from "react";
 import Imgix from "react-imgix";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 import { formatTime } from "utils/filters";
 import StarRatings from "components/StarRatings";
 
@@ -42,23 +43,30 @@ const HeroMedia = ({ item }) => {
     if (!item?.backdrop_path) return null;
 
     return (
-      <Imgix
-        src={buildURL(item.backdrop_path)}
-        className="w-full h-full object-cover"
-        sizes="(max-width: 800px) 100vw, 800px"
-        loading="lazy"
-        imgixParams={{
-          auto: "compress,format",
-          fit: "crop",
-          w: 800,
-          q: 80,
-        }}
-        htmlAttributes={{
-          width: 800,
-          height: 450,
-        }}
-        alt={item.title}
-      />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="w-full h-full"
+      >
+        <Imgix
+          src={buildURL(item.backdrop_path)}
+          className="w-full h-full object-cover"
+          sizes="(max-width: 800px) 100vw, 800px"
+          imgixParams={{
+            auto: "compress,format",
+            fit: "crop",
+            w: 800,
+            q: 80,
+          }}
+          htmlAttributes={{
+            width: 800,
+            height: 450,
+            loading: "lazy",
+          }}
+          alt={item.title}
+        />
+      </motion.div>
     );
   };
 

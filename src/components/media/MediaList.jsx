@@ -5,6 +5,8 @@ import MediaItem from "./MediaItem";
 const MediaList = ({ mediaItems, mediaList }) => {
   const { t } = useTranslation();
 
+  console.log(mediaList);
+
   return (
     <>
       {mediaList.map((media, i) => (
@@ -15,13 +17,39 @@ const MediaList = ({ mediaItems, mediaList }) => {
           </div>
           <div id="media-items-scroller">
             <div className="content">
-              {media.type === "movie" &&
+              {media.title === "Popular Movies" &&
                 mediaItems?.movies.map((item) => (
-                  <MediaItem key={item?.id} item={item} />
+                  <MediaItem key={item?.id} item={item} itemType={media.type} />
                 ))}
-              {media.type === "tv" &&
+
+              {media.title === "Popular TV Shows" &&
                 mediaItems?.tv.map((item) => (
-                  <MediaItem key={item?.id} item={item} />
+                  <MediaItem key={item?.id} item={item} itemType={media.type} />
+                ))}
+
+              {media.title === "Upcoming Movies" &&
+                mediaItems?.upcoming.map((item) => (
+                  <MediaItem key={item?.id} item={item} itemType={media.type} />
+                ))}
+
+              {media.title === "Top Rated Movies" &&
+                mediaItems?.top_rated.map((item) => (
+                  <MediaItem key={item?.id} item={item} itemType={media.type} />
+                ))}
+
+              {media.title === "Now Playing Movies" &&
+                mediaItems?.now_playing.map((item) => (
+                  <MediaItem key={item?.id} item={item} itemType={media.type} />
+                ))}
+
+              {media.title === "Top Rated TV Shows" &&
+                mediaItems?.top_rated.map((item) => (
+                  <MediaItem key={item?.id} item={item} itemType={media.type} />
+                ))}
+
+              {media.title === "TV Shows Airing Today" &&
+                mediaItems?.tv.map((item) => (
+                  <MediaItem key={item?.id} item={item} itemType={media.type} />
                 ))}
               <MediaLink media={media}>
                 <div className="media-item">

@@ -38,7 +38,6 @@ const Container = ({ children }) => {
           movies: movies?.data?.results || [],
           tv: tv?.data?.results || [],
         });
-        console.log(mediaItems);
       } catch (error) {
         console.error("Error fetching media: ", error);
       }
