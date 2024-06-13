@@ -3,6 +3,28 @@ import MediaLink from "./MediaLink";
 import MediaItem from "./MediaItem";
 import { twMerge } from "tailwind-merge";
 
+const MediaListItems = ({ media, mediaItems, children }) => {
+  switch (media.title) {
+    case "Popular TV Shows":
+      return mediaItems?.tv.map((item) => children(item));
+    case "Top Rated TV Shows":
+      return mediaItems?.top_rated.map((item) => children(item));
+    case "TV Shows Airing Today":
+      return mediaItems?.airing_today.map((item) => children(item));
+
+    case "Popular Movies":
+      return mediaItems?.movies.map((item) => children(item));
+    case "Upcoming Movies":
+      return mediaItems?.upcoming.map((item) => children(item));
+    case "Top Rated Movies":
+      return mediaItems?.top_rated.map((item) => children(item));
+    case "Now Playing Movies":
+      return mediaItems?.now_playing.map((item) => children(item));
+    default:
+      return null;
+  }
+};
+
 const MediaList = ({ mediaItems, mediaList }) => {
   const { t } = useTranslation();
 
@@ -16,40 +38,11 @@ const MediaList = ({ mediaItems, mediaList }) => {
           </div>
           <div id="media-items-scroller">
             <div className="content">
-              {media.title === "Popular Movies" &&
-                mediaItems?.movies.map((item) => (
-                  <MediaItem key={item?.id} item={item} itemType={media.type} />
-                ))}
-
-              {media.title === "Popular TV Shows" &&
-                mediaItems?.tv.map((item) => (
-                  <MediaItem key={item?.id} item={item} itemType={media.type} />
-                ))}
-
-              {media.title === "Upcoming Movies" &&
-                mediaItems?.upcoming.map((item) => (
-                  <MediaItem key={item?.id} item={item} itemType={media.type} />
-                ))}
-
-              {media.title === "Top Rated Movies" &&
-                mediaItems?.top_rated.map((item) => (
-                  <MediaItem key={item?.id} item={item} itemType={media.type} />
-                ))}
-
-              {media.title === "Now Playing Movies" &&
-                mediaItems?.now_playing.map((item) => (
-                  <MediaItem key={item?.id} item={item} itemType={media.type} />
-                ))}
-
-              {media.title === "Top Rated TV Shows" &&
-                mediaItems?.top_rated.map((item) => (
-                  <MediaItem key={item?.id} item={item} itemType={media.type} />
-                ))}
-
-              {media.title === "TV Shows Airing Today" &&
-                mediaItems?.airing_today.map((item) => (
-                  <MediaItem key={item?.id} item={item} itemType={media.type} />
-                ))}
+              <MediaListItems media={media} mediaItems={mediaItems}>
+                {(item) => (
+                  <MediaItem key={item?.id} item={item} itemType={"tv"} />
+                )}
+              </MediaListItems>
               <MediaLink media={media}>
                 <div className="media-item">
                   <div

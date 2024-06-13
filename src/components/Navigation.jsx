@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { twMerge } from "tailwind-merge";
 import NAV_LINKS from "constants/links";
 import { useTranslation } from "react-i18next";
 
@@ -16,12 +17,13 @@ const Navigation = () => {
         >
           {({ isActive }) => (
             <div
-              className={`${
+              className={twMerge(
                 isActive
                   ? `${link.activeIcon}
-                 text-primary`
-                  : link.defaultIcon
-              } text-xl sm:text-2xl`}
+               text-primary`
+                  : link.defaultIcon,
+                "text-xl sm:text-2xl",
+              )}
             ></div>
           )}
         </NavLink>

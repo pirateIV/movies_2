@@ -15,6 +15,7 @@ const MediaItemImage = ({ imagePath, title }) => (
         transition={{ duration: 1 }}
         src={buildURL(imagePath, "400x600")}
         srcSet={`${buildURL(imagePath, "400x600")} 1x, ${buildURL(imagePath, "800x1200")} 2x`}
+        loading="lazy"
         alt={`movie title: ${title}`}
       />
     )}

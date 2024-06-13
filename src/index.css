@@ -43,7 +43,7 @@ body {
     @apply hidden sm:inline-flex items-center gap-2.5 px-6 py-3 transition-colors bg-[#17181a] hover:bg-[#292a2d];
   }
   .popular {
-    @apply py-1 sm:py-5 min-h-80;
+    @apply min-h-80;
     background: linear-gradient(to right, #111, 60%, #000);
   }
   .popular .header {

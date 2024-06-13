@@ -62,7 +62,7 @@ const HeroMedia = ({ item }) => {
           htmlAttributes={{
             width: 800,
             height: 450,
-            loading: "lazy",
+            // loading: "lazy",
           }}
           alt={item.title}
         />
