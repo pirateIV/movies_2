@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import MediaLink from "./MediaLink";
-import MediaItem from "./MediaItem";
+import MediaItem from "./Item";
 import { twMerge } from "tailwind-merge";
 
 const MediaListItems = ({ media, mediaItems, children }) => {

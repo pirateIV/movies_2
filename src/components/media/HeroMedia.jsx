@@ -6,11 +6,11 @@ import { motion } from "framer-motion";
 import { formatNumber, formatTime } from "utils/filters";
 import StarRatings from "components/StarRatings";
 
-const HeroMedia = ({ item }) => {
+const HeroMedia = ({ item, type }) => {
   const { t } = useTranslation();
 
   const buildURL = (imagePath) =>
-    `https://image.tmdb.org/t/p/w1280/${imagePath}`;
+    `https://image.tmdb.org/t/p/w780/${imagePath}`;
 
   const reviews = item?.vote_count ? (
     <div id="reviews">
@@ -76,7 +76,7 @@ const HeroMedia = ({ item }) => {
   return (
     <Link
       id="featured"
-      to={`movie/${item?.id}`}
+      to={`${type}/${item?.id}`}
       aria-label={item?.title || "link to movie"}
     >
       <div className="featured-container aspect-3/2 lg:aspect-25/9">

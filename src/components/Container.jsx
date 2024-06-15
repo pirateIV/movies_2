@@ -1,13 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { QUERY_LIST } from "constants/lists";
-import {
-  listMedia,
-  getMedia as getHeroMedia,
-  getMedia,
-} from "services/tmdbAPI";
+import { fetchMediaCollection, fetchHeroMedia } from "redux/slices/mediaSlice";
 import HeroMedia from "./media/HeroMedia";
-import MediaList from "./media/MediaList";
+import MediaList from "./media/List";
 import Footer from "./Footer";
 
 const initialQueries = [QUERY_LIST.movie[0], QUERY_LIST.tv[0]];
@@ -15,6 +12,8 @@ const initialQueries = [QUERY_LIST.movie[0], QUERY_LIST.tv[0]];
 const Container = ({ children }) => {
   const location = useLocation();
   const { movieId, tvId } = useParams();
+  const dispatch = useDispatch();
+  const { heroMedia, mediaCollection } = useSelector((state) => state.media);
 
   const determineQueries = () => {
     if (location.pathname.includes("movie")) {
@@ -27,51 +26,25 @@ const Container = ({ children }) => {
 
   const currentQueries = determineQueries();
 
-  const [selectedMedia, setSelectedMedia] = useState({ movieId, tvId });
-  const [mediaCollection, setMediaCollection] = useState({
-    movies: [],
-    tv: [],
-  });
+  useEffect(() => {
+    dispatch(fetchMediaCollection());
+  }, [dispatch]);
 
   useEffect(() => {
-    const getMediaCollection = async () => {
-      const [movieData, tvData] = await Promise.all([
-        listMedia("movie", QUERY_LIST.movie[0].query),
-        listMedia("tv", QUERY_LIST.tv[0].query),
-      ]);
-
-      const movieList = movieData?.data?.results || [];
-      const tvList = tvData?.data?.results || [];
-
-      setMediaCollection({ movies: movieList, tv: tvList });
-    };
-    getMediaCollection();
-  }, []);
-
-  useEffect(() => {
-    const getHeroMedia = async () => {
-      if (!location.pathname.includes("tv")) {
-        const selectedMovieId = movieId
-          ? movieId
-          : mediaCollection?.movies[0]?.id;
-
-        const heroMediaData = await getMedia("movie", selectedMovieId);
-        setSelectedMedia(heroMediaData?.data);
-      } else if (location.pathname.includes("tv")) {
-        const selectedTvId = tvId ? tvId : mediaCollection?.tv[0]?.id;
-
-        const heroMediaData = await getMedia("tv", selectedTvId);
-        setSelectedMedia(heroMediaData?.data);
-      }
-    };
-    getHeroMedia();
-  }, [mediaCollection, location]);
+    if (!location.pathname.includes("tv")) {
+      const selectedMovieId = movieId ? movieId : mediaCollection.movies[0]?.id;
+      dispatch(fetchHeroMedia({ type: "movie", id: selectedMovieId }));
+    } else if (location.pathname.includes("tv")) {
+      const selectedTvId = tvId ? tvId : mediaCollection.tv[0]?.id;
+      dispatch(fetchHeroMedia({ type: "tv", id: selectedTvId }));
+    }
+  }, [dispatch, location, movieId, tvId, mediaCollection]);
 
   return (
     <div id="app-scroller">
       <div>
         {!location.pathname.includes("search") && (
-          <HeroMedia item={selectedMedia} />
+          <HeroMedia item={heroMedia} />
         )}
         {!location.pathname.includes("search") &&
           !location.pathname.includes(movieId || tvId) && (
@@ -79,7 +52,7 @@ const Container = ({ children }) => {
               mediaItems={mediaCollection}
               mediaList={currentQueries}
             />
-          )}{" "}
+          )}
         {children}
         {!location.pathname.includes("search") && <Footer />}
       </div>

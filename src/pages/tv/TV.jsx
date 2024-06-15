@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { QUERY_LIST } from "constants/lists";
-import MediaList from "components/media/MediaList";
+import MediaList from "components/media/List";
 import { listMedia } from "services/tmdbAPI";
 
 const queries = [QUERY_LIST.tv[1], QUERY_LIST.tv[2]];

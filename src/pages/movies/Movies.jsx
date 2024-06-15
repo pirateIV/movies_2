@@ -1,5 +1,5 @@
 import { QUERY_LIST } from "constants/lists";
-import MediaList from "components/media/MediaList";
+import MediaList from "components/media/List";
 import { useEffect, useState } from "react";
 import { listMedia } from "services/tmdbAPI";
 
