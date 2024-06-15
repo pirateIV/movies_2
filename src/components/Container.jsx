@@ -1,80 +1,84 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { QUERY_LIST } from "constants/lists";
-import { listMedia, getMedia as getHeroMedia } from "services/tmdbAPI";
+import {
+  listMedia,
+  getMedia as getHeroMedia,
+  getMedia,
+} from "services/tmdbAPI";
 import HeroMedia from "./media/HeroMedia";
 import MediaList from "./media/MediaList";
 import Footer from "./Footer";
-import useLocalStorage from "hooks/useLocalStorage";
 
-const queries = [QUERY_LIST.movie[0], QUERY_LIST.tv[0]];
+const initialQueries = [QUERY_LIST.movie[0], QUERY_LIST.tv[0]];
 
 const Container = ({ children }) => {
   const location = useLocation();
-  const { movieId } = useParams();
+  const { movieId, tvId } = useParams();
 
-  const getFilteredQueries = () => {
+  const determineQueries = () => {
     if (location.pathname.includes("movie")) {
-      return [queries[0]];
+      return [initialQueries[0]];
     } else if (location.pathname.includes("tv")) {
-      return [queries[1]];
+      return [initialQueries[1]];
     }
-    return queries;
+    return initialQueries;
   };
 
-  const filteredQueries = getFilteredQueries();
+  const currentQueries = determineQueries();
 
-  const [mediaItems, setMediaItems] = useState({ movies: [], tv: [] });
-  const [heroMedia, setHeroMedia] = useState(null);
-  const [heroMediaId, setHeroMediaId] = useLocalStorage("hero_media_id", null);
-
-  useEffect(() => {
-    const getMedia = async () => {
-      try {
-        const [movies, tv] = await Promise.all([
-          listMedia(queries[0].type, "popular"),
-          listMedia(queries[1].type, "popular"),
-        ]);
-        const moviesData = movies?.data?.results || [];
-        const tvData = tv?.data?.results || [];
-
-        setMediaItems({ movies: moviesData, tv: tvData });
-
-        if (moviesData.length > 0) {
-          setHeroMediaId(moviesData[0].id);
-        }
-      } catch (error) {
-        console.error("Error fetching media: ", error);
-      }
-    };
-
-    getMedia();
-  }, [setHeroMediaId]);
+  const [selectedMedia, setSelectedMedia] = useState({ movieId, tvId });
+  const [mediaCollection, setMediaCollection] = useState({
+    movies: [],
+    tv: [],
+  });
 
   useEffect(() => {
-    const getHeroMediaDetails = async () => {
-      if (heroMediaId) {
-        try {
-          const heroMediaDetails = await getHeroMedia("movie", heroMediaId);
-          setHeroMedia(heroMediaDetails?.data);
-        } catch (error) {
-          console.error("Error fetching hero media: ", error);
-        }
+    const getMediaCollection = async () => {
+      const [movieData, tvData] = await Promise.all([
+        listMedia("movie", QUERY_LIST.movie[0].query),
+        listMedia("tv", QUERY_LIST.tv[0].query),
+      ]);
+
+      const movieList = movieData?.data?.results || [];
+      const tvList = tvData?.data?.results || [];
+
+      setMediaCollection({ movies: movieList, tv: tvList });
+    };
+    getMediaCollection();
+  }, []);
+
+  useEffect(() => {
+    const getHeroMedia = async () => {
+      if (!location.pathname.includes("tv")) {
+        const selectedMovieId = movieId
+          ? movieId
+          : mediaCollection?.movies[0]?.id;
+
+        const heroMediaData = await getMedia("movie", selectedMovieId);
+        setSelectedMedia(heroMediaData?.data);
+      } else if (location.pathname.includes("tv")) {
+        const selectedTvId = tvId ? tvId : mediaCollection?.tv[0]?.id;
+
+        const heroMediaData = await getMedia("tv", selectedTvId);
+        setSelectedMedia(heroMediaData?.data);
       }
     };
-
-    getHeroMediaDetails();
-  }, [heroMediaId]);
+    getHeroMedia();
+  }, [mediaCollection, location]);
 
   return (
     <div id="app-scroller">
       <div>
         {!location.pathname.includes("search") && (
-          <HeroMedia item={heroMedia} />
+          <HeroMedia item={selectedMedia} />
         )}
         {!location.pathname.includes("search") &&
-          !location.pathname.includes(movieId) && (
-            <MediaList mediaItems={mediaItems} mediaList={filteredQueries} />
+          !location.pathname.includes(movieId || tvId) && (
+            <MediaList
+              mediaItems={mediaCollection}
+              mediaList={currentQueries}
+            />
           )}{" "}
         {children}
         {!location.pathname.includes("search") && <Footer />}

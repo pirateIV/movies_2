@@ -22,7 +22,6 @@ const TV = () => {
           top_rated: topRated?.data?.results || [],
           airing_today: airingToday?.data?.results || [],
         });
-        console.log(tvLists);
       } catch (error) {
         console.log(error);
       }

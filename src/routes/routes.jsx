@@ -40,24 +40,22 @@ const router = createBrowserRouter([
       {
         path: "/tv",
         element: <TV />,
-        children: [
-          {
-            path: "/tv/:tvId",
-            element: <TVShow />,
-          },
-          {
-            path: "/tv/category/popular",
-            element: null,
-          },
-          {
-            path: "/tv/category/top_rated",
-            element: null,
-          },
-          {
-            path: "/tv/category/airing_today",
-            element: null,
-          },
-        ],
+      },
+      {
+        path: "/tv/:tvId",
+        element: <TVShow />,
+      },
+      {
+        path: "/tv/category/popular",
+        element: null,
+      },
+      {
+        path: "/tv/category/top_rated",
+        element: null,
+      },
+      {
+        path: "/tv/category/airing_today",
+        element: null,
       },
       {
         path: "/search",
