@@ -11,7 +11,7 @@ const MediaItemImage = ({ imagePath, title, className }) => (
       <motion.img
         width="400"
         height="600"
-        className="object-cover"
+        className="object-cover h-full"
         initial={{ opacity: 0, scale: 0.97 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1 }}

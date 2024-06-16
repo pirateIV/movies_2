@@ -17,3 +17,7 @@ export const getMedia = (type, id) => {
     include_image_language: "en",
   });
 };
+
+export const getMediaRecommended = (type, id) => {
+  return fetchTMDB(`/${type}/${id}/recommendations`);
+};
