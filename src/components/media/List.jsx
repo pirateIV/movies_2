@@ -9,7 +9,7 @@ const MediaList = ({ mediaItems, mediaList }) => {
   return (
     <>
       {mediaList.map((media, i) => (
-        <div key={i} className="popular">
+        <div key={i} className="media-list">
           <div className="header">
             <h1>{t(media.title)}</h1>
             <MediaLink media={media}>{t("Explore more")}</MediaLink>

@@ -43,7 +43,7 @@ body {
   #featured button#watch_trailer {
     @apply hidden sm:inline-flex items-center gap-2.5 px-6 py-3 transition-colors bg-transparent hover:bg-[#17181a];
   }
-  .popular {
+  .media-list {
     @apply min-h-80;
     /* background: linear-gradient(to right, #111, 60%, #000); */
   }
@@ -56,20 +56,20 @@ body {
    .header a {
     @apply text-xs md:text-base text-[#777] opacity-95 hover:text-[#40c1ad];
   }
-  .popular #media-items-scroller {
+  .media-list #media-items-scroller {
     @apply overflow-x-scroll;
   }
-  .popular .content {
+  .media-list .content {
     @apply flex w-max gap-2 p-2 px-10 md:px-10;
   }
-  .popular .content a {
+  .media-list .content a {
     @apply flex-1 pb-2 w-40 md:w-60;
   }
-  .popular .media-item {
+  .media-list .media-item {
     @apply block p-0.5 sm:p-1 aspect-[10/16] bg-[#202124] hover:scale-105;
     transition: transform 0.4s ease;
   }
-  .popular .content img {
+  .media-list .content img {
     @apply w-full h-full object-cover;
   }
   .search-container {

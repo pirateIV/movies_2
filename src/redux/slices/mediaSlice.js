@@ -34,6 +34,9 @@ const mediaSlice = createSlice({
       return state.heroMedia;
     },
   },
+  selectors: {
+    selectedMedia: (state) => state.heroMedia,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchMediaCollection.pending, (state) => {
@@ -54,5 +57,7 @@ const mediaSlice = createSlice({
       });
   },
 });
+
+export const getHeroMedia = (state) => state.media.heroMedia;
 
 export default mediaSlice.reducer;

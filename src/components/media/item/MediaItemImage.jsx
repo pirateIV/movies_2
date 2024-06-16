@@ -1,15 +1,17 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { twMerge } from "tailwind-merge";
 
 const buildURL = (imagePath, size) =>
   `https://movies-proxy.vercel.app/ipx/f_webp&s_${size}/tmdb/${imagePath}`;
 
-const MediaItemImage = ({ imagePath, title }) => (
-  <div className="media-item">
+const MediaItemImage = ({ imagePath, title, className }) => (
+  <div className={twMerge("media-item", className)}>
     {imagePath && (
       <motion.img
         width="400"
         height="600"
+        className="object-cover"
         initial={{ opacity: 0, scale: 0.97 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1 }}

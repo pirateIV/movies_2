@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { QUERY_LIST } from "constants/lists";
@@ -11,9 +11,11 @@ const initialQueries = [QUERY_LIST.movie[0], QUERY_LIST.tv[0]];
 
 const Container = ({ children }) => {
   const location = useLocation();
-  const { movieId, tvId } = useParams();
   const dispatch = useDispatch();
+  const { movieId, tvId } = useParams();
   const { heroMedia, mediaCollection } = useSelector((state) => state.media);
+
+  const [selectedMediaType, setSelectedMediaType] = useState("movie");
 
   const determineQueries = () => {
     if (location.pathname.includes("movie")) {
@@ -34,9 +36,11 @@ const Container = ({ children }) => {
     if (!location.pathname.includes("tv")) {
       const selectedMovieId = movieId ? movieId : mediaCollection.movies[0]?.id;
       dispatch(fetchHeroMedia({ type: "movie", id: selectedMovieId }));
+      setSelectedMediaType("movie");
     } else if (location.pathname.includes("tv")) {
       const selectedTvId = tvId ? tvId : mediaCollection.tv[0]?.id;
       dispatch(fetchHeroMedia({ type: "tv", id: selectedTvId }));
+      setSelectedMediaType("tv");
     }
   }, [dispatch, location, movieId, tvId, mediaCollection]);
 
@@ -44,7 +48,7 @@ const Container = ({ children }) => {
     <div id="app-scroller">
       <div>
         {!location.pathname.includes("search") && (
-          <HeroMedia item={heroMedia} />
+          <HeroMedia type={selectedMediaType} item={heroMedia} />
         )}
         {!location.pathname.includes("search") &&
           !location.pathname.includes(movieId || tvId) && (
