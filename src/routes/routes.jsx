@@ -7,6 +7,7 @@ import Movie from "@pages/movies/_id";
 import Movies from "@pages/movies/Movies";
 import Search from "@pages/search/Search";
 import NotFound from "@pages/404/404";
+import Person from "@pages/person/Person";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "/tv/category/airing_today",
         element: null,
+      },
+      {
+        path: "/person/personId",
+        element: <Person />,
       },
       {
         path: "/search",

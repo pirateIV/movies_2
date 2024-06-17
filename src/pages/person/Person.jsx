@@ -1,7 +1,9 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 const Person = () => {
-  return <div>Person</div>;
+  const { personId } = useParams();
+  return <div>Person {personId}</div>;
 };
 
 export default Person;

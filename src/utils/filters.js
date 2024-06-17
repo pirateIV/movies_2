@@ -23,3 +23,12 @@ export function formatNumber(num) {
   }
   return num;
 }
+
+export function formatDate(dateString) {
+  const [year, month, day] = dateString.split("-");
+  return `${parseInt(month)}/${parseInt(day)}/${parseInt(year)}`;
+}
+
+export function numberWithCommas(number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
