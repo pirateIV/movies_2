@@ -35,7 +35,8 @@ const Movie = () => {
     const fetchSimilarMovies = async () => {
       try {
         const response = await getMediaRecommended("movie", movieId);
-        setSimilarMovies(response?.data?.results || []);
+        const results = response?.data?.results || [];
+        setSimilarMovies(results);
       } catch (error) {
         console.log("Error fetching recommended movies", error);
       }
@@ -45,14 +46,14 @@ const Movie = () => {
 
   console.log(mediaDetails);
 
-  const director = mediaDetails?.credits?.crew?.filter(
-    (c) => c.department === "Directing",
-  );
+  // const director = mediaDetails?.credits?.crew?.filter(
+  //   (c) => c.department === "Directing",
+  // );
 
-  const _runtime = useMemo(
-    () => formatTime(mediaDetails?.runtime),
-    [mediaDetails?.runtime],
-  );
+  // const _runtime = useMemo(
+  //   () => formatTime(mediaDetails?.runtime),
+  //   [mediaDetails?.runtime],
+  // );
   // const _release_date = useMemo(
   //   () => formatDate(mediaDetails?.release_date),
   //   [mediaDetails?.release_date],
@@ -104,7 +105,7 @@ const Movie = () => {
             <div className="media-item block w-[12.5rem]">
               <div className="h-full opacity-10">
                 <div className="i-ph:user m-auto text-4xl"></div>
-              </div>
+              </div>{" "}
             </div>
           )}
         </Link>
@@ -151,8 +152,8 @@ const Movie = () => {
             <h2 className="text-3xl mb-4">Storyline</h2>
             <div className="opacity-80">{mediaDetails?.overview}</div>
           </div>
-          <div className="text-sm opacity-80">
-            {/* <div>Released</div>
+          {/* <div className="text-sm opacity-80">
+            <div>Released</div>
             <div>{_release_date}</div>
 
             <div>Runtime</div>
@@ -166,9 +167,9 @@ const Movie = () => {
             <div>Revenue</div>
             <div>${_revenue}</div>
 
-            <div>Genre</div> */}
-            {/* <div>{renderGenre()}</div> */}
-          </div>
+            <div>Genre</div>
+            <div>{renderGenre()}</div>
+          </div> */}
         </div>
       </div>
 
