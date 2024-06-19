@@ -44,40 +44,6 @@ const Movie = () => {
     fetchSimilarMovies();
   }, [movieId]);
 
-  console.log(mediaDetails);
-
-  // const director = mediaDetails?.credits?.crew?.filter(
-  //   (c) => c.department === "Directing",
-  // );
-
-  // const _runtime = useMemo(
-  //   () => formatTime(mediaDetails?.runtime),
-  //   [mediaDetails?.runtime],
-  // );
-  // const _release_date = useMemo(
-  //   () => formatDate(mediaDetails?.release_date),
-  //   [mediaDetails?.release_date],
-  // );
-  // const _budget = useMemo(
-  //   () => numberWithCommas(mediaDetails?.budget),
-  //   [mediaDetails?.budget],
-  // );
-  // const _revenue = useMemo(
-  //   () => numberWithCommas(mediaDetails?.revenue),
-  //   [mediaDetails?.revenue],
-  // );
-
-  const renderGenre = () =>
-    mediaDetails?.genres.map((g, index) => (
-      <Link
-        key={index}
-        to={`genre/${g.id}`}
-        className="text-xs bg-gray-100 p-2"
-      >
-        {g.name}
-      </Link>
-    ));
-
   const renderTabs = () =>
     buttonTabs.map((button, i) => (
       <button
@@ -152,24 +118,6 @@ const Movie = () => {
             <h2 className="text-3xl mb-4">Storyline</h2>
             <div className="opacity-80">{mediaDetails?.overview}</div>
           </div>
-          {/* <div className="text-sm opacity-80">
-            <div>Released</div>
-            <div>{_release_date}</div>
-
-            <div>Runtime</div>
-            <div>{_runtime}</div>
-
-            <div>Director</div>
-
-            <div>Budget</div>
-            <div>${_budget}</div>
-
-            <div>Revenue</div>
-            <div>${_revenue}</div>
-
-            <div>Genre</div>
-            <div>{renderGenre()}</div>
-          </div> */}
         </div>
       </div>
 
