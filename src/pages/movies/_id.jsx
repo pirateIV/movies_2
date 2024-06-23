@@ -1,23 +1,15 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
-import MediaItem from "components/media/Item";
-import MediaList from "components/media/List";
 import MediaItemImage from "components/media/item/MediaItemImage";
 import MediaItemRating from "components/media/item/MediaItemRating";
 import MediaItemTitle from "components/media/item/MediaItemTitle";
 
 import { getHeroMedia } from "redux/slices/mediaSlice";
 import { getMediaRecommended } from "services/tmdbAPI";
-import {
-  formatDate,
-  formatNumber,
-  formatTime,
-  numberWithCommas,
-} from "utils/filters";
 
 const buttonTabs = ["Overview", "Videos", "Photos"];
 
@@ -60,39 +52,47 @@ const Movie = () => {
 
   const renderCast = () =>
     mediaDetails?.credits?.cast.map((c, i) => (
-      <div key={i}>
-        <Link to={`/person/${c.id}`} className="flex-1">
-          {c.profile_path ? (
-            <MediaItemImage
-              imagePath={c.profile_path}
-              className="block w-[12.5rem] *:h-full"
-            />
-          ) : (
-            <div className="media-item block w-[12.5rem]">
-              <div className="h-full opacity-10">
-                <div className="i-ph:user m-auto text-4xl"></div>
-              </div>{" "}
-            </div>
-          )}
-        </Link>
+      <Link
+        key={i}
+        to={`/person/${c.id}`}
+        className="block flex-1 pb-2 w-36 sm:w-44 md:w-[12.5rem]"
+      >
+        {c.profile_path ? (
+          <MediaItemImage imagePath={c.profile_path} />
+        ) : (
+          <div className="media-item">
+            <div className="h-full opacity-10">
+              <div className="i-ph:user m-auto text-4xl"></div>
+            </div>{" "}
+          </div>
+        )}
         <div className="mt-2">{c.name}</div>
         <div className="opacity-50">{c.character}</div>
-      </div>
+      </Link>
     ));
 
   const renderSimilarMovies = () =>
     similarMovies.map((similar) => (
-      <div key={similar.id}>
-        <Link to={`/movie/${similar.id}`} className="flex-1">
+      <Link
+        key={similar.id}
+        to={`/movie/${similar.id}`}
+        className="block flex-1 pb-2 w-36 sm:w-44 md:w-[12.5rem]"
+      >
+        {similar.poster_path ? (
           <MediaItemImage
-            className="block w-[12.5rem] *:h-full"
             imagePath={similar.poster_path}
             title={similar.title}
           />
-        </Link>
+        ) : (
+          <div className="media-item">
+            <div className="h-full opacity-10">
+              <div className="i-ph:film-strip m-auto text-4xl"></div>
+            </div>{" "}
+          </div>
+        )}
         <MediaItemTitle title={similar.title} />
         <MediaItemRating voteAverage={similar.vote_average} />
-      </div>
+      </Link>
     ));
 
   return (

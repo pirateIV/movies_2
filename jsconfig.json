@@ -4,7 +4,8 @@
     "paths": {
       "@pages/*": ["pages/*"],
       "@assets/*": ["assets/*"],
-      "@routes/*": ["routes/*"]
+      "@routes/*": ["routes/*"],
+      "@constants/*": ["constants/*"]
     }
   }
 }

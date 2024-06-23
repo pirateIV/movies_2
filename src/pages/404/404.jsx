@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 const NotFound = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col  items-center justify-center min-h-screen">
       <h1 className="text-9xl">404</h1>
@@ -10,9 +13,9 @@ const NotFound = () => {
         </blockquote>
 
         <div className="my-5">
-          <a href="/" className="text-blue-600">
+          <div onClick={() => navigate(-1)} className="text-blue-600">
             <span>Back to home</span> 👈🏿
-          </a>
+          </div>
         </div>
       </div>
     </div>

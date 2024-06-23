@@ -44,7 +44,7 @@ body {
     @apply hidden sm:inline-flex items-center gap-2.5 px-6 py-3 transition-colors bg-transparent hover:bg-[#17181a];
   }
   .media-list {
-    @apply min-h-80;
+    @apply min-h-[350px];
     /* background: linear-gradient(to right, #111, 60%, #000); */
   }
    .header {
@@ -79,7 +79,7 @@ body {
     @apply flex flex-row-reverse items-center bg-[#9ca3af1a] px-6 py-4 gap-3;
   }
   .movie-title {
-    @apply mt-2 text-center sm:text-start text-xs md:text-sm lg:text-base;
+    @apply mt-2 text-center text-wrap sm:text-start text-xs md:text-sm lg:text-base;
   }
   .stars_votes_average {
     @apply relative !opacity-100;
