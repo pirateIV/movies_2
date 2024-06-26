@@ -6,7 +6,7 @@ const root = () => {
   return (
     <>
       <div className="flex flex-col-reverse lg:flex-row-reverse">
-        {/* <ScrollToTop /> */}
+        <ScrollToTop />
         <Navigation />
         <MainContent />
       </div>
