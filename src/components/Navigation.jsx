@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
-import NAV_LINKS from "constants/links";
+import links from "constants/links";
 import { useTranslation } from "react-i18next";
 
 const Navigation = () => {
@@ -8,7 +8,7 @@ const Navigation = () => {
 
   return (
     <aside>
-      {NAV_LINKS.map((link) => (
+      {links.map((link) => (
         <NavLink
           to={link.to}
           key={link.to}

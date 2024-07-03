@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	#tabs-header {
+		@apply flex items-center justify-center gap-8 py-6 *:uppercase;
+	}
+}
